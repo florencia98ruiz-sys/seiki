@@ -503,13 +503,13 @@ body.modal-open { overflow: hidden; }
 /* Tarjetas de "Nuestra visión" con vida */
 .pillar { position: relative; overflow: hidden; isolation: isolate; cursor: default; }
 .pillar > *:not(.pillar__bar) { position: relative; z-index: 1; }
-.pillar::before { content: ''; position: absolute; inset: 0; z-index: 0; border-radius: inherit; padding: 1.5px; background: linear-gradient(120deg, var(--c-plum), var(--c-lav), var(--c-teal)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity .5s ease; pointer-events: none; }
-.pillar::after { content: ''; position: absolute; inset: 0; z-index: 0; background: linear-gradient(100deg, rgba(239,235,246,.9), rgba(230,245,242,.9)); transform: translateX(-101%); transition: transform .7s cubic-bezier(.4,0,.2,1); pointer-events: none; }
+.pillar::before { content: ''; position: absolute; inset: 0; z-index: 0; border-radius: inherit; padding: 1.5px; background: linear-gradient(120deg, var(--c-plum), var(--c-lav), var(--c-teal)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity .3s ease; pointer-events: none; }
+.pillar::after { content: ''; position: absolute; inset: 0; z-index: 0; background: linear-gradient(100deg, rgba(239,235,246,.9), rgba(230,245,242,.9)); transform: translateX(-101%); transition: transform .4s cubic-bezier(.4,0,.2,1); pointer-events: none; }
 .pillar.active { border-color: transparent; box-shadow: 0 18px 44px rgba(44,70,128,.12); }
 .pillar.active::before { opacity: 1; }
 .pillar.active::after { transform: translateX(0); }
 .pillar__icon { position: relative; overflow: hidden; transition: transform .5s cubic-bezier(.3,1.6,.5,1), color .4s ease; }
-.pillar__icon::before { content: ''; position: absolute; inset: 0; border-radius: inherit; opacity: 0; transition: opacity .45s ease; }
+.pillar__icon::before { content: ''; position: absolute; inset: 0; border-radius: inherit; opacity: 0; transition: opacity .25s ease; }
 .pillar:nth-child(1) .pillar__icon::before { background: linear-gradient(135deg, var(--c-plum), var(--c-lav)); }
 .pillar:nth-child(2) .pillar__icon::before { background: linear-gradient(135deg, var(--c-teal), #3CC4B0); }
 .pillar:nth-child(3) .pillar__icon::before { background: linear-gradient(135deg, var(--c-navy), #4B6CB7); }
@@ -525,7 +525,7 @@ body.modal-open { overflow: hidden; }
 .pillars.paused .pillar.active .pillar__bar { animation-play-state: paused; }
 @keyframes pillarBar { to { transform: scaleX(1); } }
 /* Íconos que se dibujan al aparecer */
-.pillar__icon svg * { stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset 1.4s ease; }
+.pillar__icon svg * { stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset .9s ease; }
 .pillar.visible .pillar__icon svg * { stroke-dashoffset: 0; }
 
 /* Responsive */
@@ -940,7 +940,6 @@ body.modal-open { overflow: hidden; }
     </div>
     <div class="footer__bottom">
       <span>© <span id="year">2026</span> SEIKI · Consultorios de Salud Integrativa</span>
-      <span>www.seikisaludintegrativa.com</span>
     </div>
   </div>
 </footer>
@@ -1230,7 +1229,7 @@ body.modal-open { overflow: hidden; }
     cards.forEach(function (c) {
       c.querySelectorAll('.pillar__icon svg *').forEach(function (el) { el.setAttribute('pathLength', '100'); });
     });
-    var idx = -1, timer = null, TIME = 4000, inView = false, hovering = false;
+    var idx = -1, timer = null, TIME = 2000, inView = false, hovering = false;
     wrap.style.setProperty('--pillar-time', TIME + 'ms');
     function setActive(i) {
       idx = i;
@@ -1250,7 +1249,7 @@ body.modal-open { overflow: hidden; }
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (en) {
         en.forEach(function (e) {
-          if (e.isIntersecting && !inView) { inView = true; setTimeout(function () { if (idx < 0) next(); start(); }, 900); }
+          if (e.isIntersecting && !inView) { inView = true; setTimeout(function () { if (idx < 0) next(); start(); }, 300); }
           else if (!e.isIntersecting && inView) { inView = false; stop(); }
         });
       }, { threshold: .35 }).observe(wrap);
