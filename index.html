@@ -321,13 +321,13 @@ h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-ink); line-height: 1
 .breath__box { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; background: linear-gradient(135deg, #F1EEF8, #E8F5F2); border-radius: 36px; padding: 64px; overflow: hidden; position: relative; }
 .breath__text h2 { font-size: clamp(28px, 3.6vw, 40px); margin-bottom: 14px; }
 .breath__text p { color: var(--c-muted); margin-bottom: 28px; max-width: 440px; }
-.breath__stage { position: relative; height: 320px; display: grid; place-items: center; }
+.breath__stage { position: relative; height: 320px; display: grid; place-items: center; margin-bottom: 40px; }
 .breath__ring { position: absolute; width: 280px; height: 280px; border-radius: 50%; border: 1.5px dashed rgba(44,70,128,.18); }
 .breath__circle { width: 130px; height: 130px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, rgba(156,134,191,.55) 55%, rgba(4,167,145,.55)); box-shadow: 0 0 0 18px rgba(255,255,255,.35), 0 0 60px rgba(156,134,191,.45); display: grid; place-items: center; transition: transform 4s ease-in-out, box-shadow 4s ease-in-out; }
 .breath__circle img { width: 52px; opacity: .9; }
 .breath.running .breath__circle.in { transform: scale(1.9); box-shadow: 0 0 0 26px rgba(255,255,255,.3), 0 0 90px rgba(4,167,145,.45); }
 .breath:not(.running) .breath__circle { animation: breatheLogo 5s ease-in-out infinite; }
-.breath__label { position: absolute; bottom: 0; left: 0; right: 0; text-align: center; font-family: var(--f-head); font-weight: 600; font-size: 20px; color: var(--c-ink); letter-spacing: .04em; min-height: 30px; }
+.breath__label { position: absolute; bottom: -40px; left: 0; right: 0; text-align: center; font-family: var(--f-head); font-weight: 600; font-size: 20px; color: var(--c-ink); letter-spacing: .04em; min-height: 30px; }
 .breath__count { font-size: 14px; color: var(--c-muted); font-weight: 500; margin-left: 8px; }
 
 /* Buscador de especialidad */
@@ -601,7 +601,8 @@ body.modal-open { overflow: hidden; }
   .breath-modal__close { top: 12px; right: 12px; }
   .breath-modal__actions { justify-content: center; }
   .breath__text h2 { font-size: 26px; }
-  .breath__stage { height: 280px; }
+  .breath__stage { height: 280px; margin-bottom: 22px; }
+  .breath__label { bottom: -18px; }
   .breath__ring { width: 230px; height: 230px; }
   .breath__circle { width: 104px; height: 104px; }
   .finder { padding: 28px 20px; }
@@ -614,6 +615,157 @@ body.modal-open { overflow: hidden; }
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .pillar__icon svg * { stroke-dashoffset: 0 !important; }
   .reveal, .spec li, .timeline li, .hero__title .w, .hero__fade { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+/* ===== Ajuste para celular (solo pantallas chicas; computadora sin cambios) ===== */
+@media (max-width: 640px) {
+  /* Que la pantalla no se mueva de costado */
+  html, body { overflow-x: hidden; overflow-x: clip; }
+  .reveal.from-left, .reveal.from-right { transform: translateY(24px); }
+  .reveal.visible.from-left, .reveal.visible.from-right { transform: none; }
+  html { scroll-padding-top: 70px; }
+
+  /* Base */
+  body { font-size: 15px; line-height: 1.6; }
+  .section { padding: 60px 0; }
+  .section__head { margin-bottom: 30px; }
+  .section__title { font-size: 26px; margin-bottom: 12px; }
+  .section__lead { font-size: 15px; }
+  .eyebrow { font-size: 10.5px; margin-bottom: 10px; }
+  .btn { font-size: 14.5px; padding: 12px 20px; }
+  .btn svg { width: 18px; height: 18px; }
+
+  /* Menú */
+  .navbar__inner { height: 64px; }
+  .nav__links { top: 64px; }
+  .brand img { height: 34px; }
+  .brand__name { font-size: 19px; }
+  .nav__toggle { width: 40px; height: 40px; }
+  .nav__toggle span { left: 9px; width: 22px; }
+  .nav__toggle span:nth-child(1) { top: 13px; } .nav__toggle span:nth-child(2) { top: 19px; } .nav__toggle span:nth-child(3) { top: 25px; }
+  .nav__toggle.open span:nth-child(1), .nav__toggle.open span:nth-child(3) { top: 19px; }
+  .nav__links a:not(.btn) { padding: 12px 0; font-size: 15px; }
+
+  /* Hero */
+  .hero { padding: 92px 0 44px; }
+  .hero__grid { gap: 32px; }
+  .hero__title { font-size: 34px; margin-bottom: 14px; }
+  .hero__sub { font-size: 16.5px; margin-bottom: 10px; }
+  .hero__text { font-size: 14.5px; margin-bottom: 24px; }
+  .hero__actions { gap: 10px; margin-bottom: 26px; }
+  .hero__facts { gap: 10px 16px; padding-top: 18px; }
+  .fact { font-size: 13px; gap: 8px; }
+  .fact__icon { width: 32px; height: 32px; }
+  .fact__icon svg { width: 16px; height: 16px; }
+  .hero__visual { max-width: 290px; }
+  .hero__frame { border-radius: 150px 150px 22px 22px; }
+  .strip { padding: 13px 0; }
+  .marquee__set { font-size: 14px; gap: 36px; padding-right: 36px; }
+
+  /* Nuestra visión */
+  .approach__grid { gap: 28px; }
+  .approach__text p { margin-bottom: 12px; }
+  .approach__quote { font-size: 16px; padding: 18px 20px; margin-top: 20px; }
+  .approach__mark { width: 78%; }
+  .pillars { gap: 12px; }
+  .pillar { padding: 18px; gap: 14px; }
+  .pillar__icon { width: 42px; height: 42px; border-radius: 12px; }
+  .pillar__icon svg { width: 21px; height: 21px; }
+  .pillar h3 { font-size: 17px; margin-bottom: 4px; }
+  .pillar p { font-size: 14px; }
+
+  /* CTA chica */
+  .mini-cta-wrap { padding-bottom: 50px; margin-top: -10px; }
+  .mini-cta { padding: 16px; gap: 12px 14px; border-radius: 20px; }
+  .mini-cta__logo { width: 40px; padding: 5px; }
+  .mini-cta__text strong { font-size: 15.5px; }
+  .mini-cta__text span { font-size: 13px; }
+  .mini-cta__actions .btn { padding: 10px 8px; font-size: 13.5px; }
+
+  /* Especialidades */
+  .finder { padding: 20px 16px; margin-bottom: 28px; border-radius: 20px; }
+  .finder__head { margin-bottom: 14px; }
+  .finder__head h3 { font-size: 19px; }
+  .finder__head span { font-size: 13px; }
+  .chips { gap: 7px; }
+  .chip { font-size: 12.5px; padding: 7px 11px; gap: 6px; }
+  .chip__emo { font-size: 14px; }
+  .result { margin-top: 18px; padding: 16px; gap: 12px 14px; }
+  .result__title { font-size: 17px; }
+  .result__why { font-size: 13.5px; }
+  .mono--md { width: 48px; height: 48px; font-size: 16px; }
+  .spec__grid { gap: 18px; }
+  .spec { padding: 26px 18px 20px; border-radius: 20px; }
+  .spec__tag { font-size: 10.5px; margin-bottom: 8px; }
+  .spec h3 { font-size: 21px; margin-bottom: 8px; }
+  .spec__who { font-size: 13.5px; margin-bottom: 16px; padding-bottom: 16px; gap: 10px; }
+  .mono--sm { width: 34px; height: 34px; font-size: 12px; }
+  .spec ul { gap: 9px; margin-bottom: 22px; }
+  .spec li { font-size: 14.5px; padding-left: 28px; }
+  .spec li::before { width: 18px; height: 18px; top: 3px; background-size: 10px; }
+  .spec li small { font-size: 13px; }
+  .spec__intro { font-size: 14.5px; margin-bottom: 12px; }
+  .spec__note { margin-top: 22px; padding: 18px; gap: 10px; }
+  .spec__note svg { width: 26px; height: 26px; }
+  .spec__note p { font-size: 14px; }
+
+  /* El consultorio */
+  .space__grid { grid-template-rows: 130px 130px 210px; gap: 10px; }
+  .space__item { border-radius: 16px; }
+  .space__cap { font-size: 11.5px; padding: 5px 10px; left: 8px; bottom: 8px; }
+
+  /* Cómo llegar */
+  .location__grid { gap: 20px; }
+  .map, .map iframe { min-height: 250px; }
+  .map { border-radius: 20px; }
+  .transit { padding: 20px 16px; border-radius: 20px; }
+  .transit__addr { gap: 10px; padding-bottom: 16px; margin-bottom: 16px; }
+  .transit__addr svg { width: 22px; height: 22px; }
+  .transit__addr strong { font-size: 16px; }
+  .transit__addr a, .transit__addr span { font-size: 13.5px; }
+  .entrance { padding: 10px; gap: 12px; margin-bottom: 16px; }
+  .entrance__img { width: 70px; height: 98px; }
+  .entrance strong { font-size: 14.5px; }
+  .entrance p { font-size: 13px; }
+  .transit__group { margin-bottom: 14px; }
+  .transit__group h4 { font-size: 11.5px; margin-bottom: 7px; }
+  .line { font-size: 12px; padding: 4px 8px; min-width: 32px; }
+  .transit__other { font-size: 13.5px; }
+
+  /* CTA final */
+  .cta { padding-bottom: 56px; }
+  .cta__box { padding: 40px 18px; border-radius: 22px; }
+  .cta__box img { width: 54px; margin-bottom: 16px; }
+  .cta__box h2 { font-size: 23px; margin-bottom: 10px; }
+  .cta__box p { font-size: 14.5px; margin-bottom: 24px; }
+  .cta__actions { gap: 10px; }
+  .cta__actions .btn { padding: 13px 16px; font-size: 14px; }
+
+  /* Footer */
+  .footer { padding: 44px 0 22px; font-size: 14px; }
+  .footer__grid { gap: 26px; padding-bottom: 30px; }
+  .footer h4 { font-size: 15px; margin-bottom: 10px; }
+  .footer ul { gap: 7px; }
+  .footer__about { margin-top: 12px; }
+  .footer__bottom { padding-top: 18px; font-size: 12.5px; }
+
+  /* WhatsApp flotante */
+  .float-wa__btn { width: 54px; height: 54px; }
+  .float-wa__btn svg { width: 28px; height: 28px; }
+  .float-wa__menu { bottom: 68px; padding: 14px; }
+  .wa-opt { padding: 10px; }
+  .wa-opt strong { font-size: 14px; }
+
+  /* Modal de respiración */
+  .breath-modal__card { padding: 50px 18px 26px; }
+  .breath__text h2 { font-size: 22px; margin-bottom: 10px; }
+  .breath__text p { font-size: 14px; margin-bottom: 18px; }
+  .breath__stage { height: 240px; margin-bottom: 18px; }
+  .breath__ring { width: 196px; height: 196px; }
+  .breath__circle { width: 88px; height: 88px; }
+  .breath__circle img { width: 38px; }
+  .breath__label { font-size: 17px; bottom: -14px; }
+  .breath-modal__close { width: 38px; height: 38px; }
 }
 </style>
 </head>
