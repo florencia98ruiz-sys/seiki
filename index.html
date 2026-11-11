@@ -404,7 +404,9 @@ h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-ink); line-height: 1
 .mono--lg > span { z-index: 1; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-.team__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+.team__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; }
+.doc { display: flex; flex-direction: column; }
+.doc .pro__contact { margin-top: auto; }
 .doc { position: relative; background: var(--c-bg); border: 1px solid var(--c-line); border-radius: var(--radius-lg); padding: 40px; overflow: hidden; transition: transform .25s ease-out, box-shadow .3s ease, opacity .8s ease; }
 .doc:hover { box-shadow: 0 24px 60px rgba(44,70,128,.12); }
 .doc::after { content: ''; position: absolute; width: 260px; height: 260px; right: -110px; top: -110px; border-radius: 50%; opacity: .5; pointer-events: none; transition: transform .8s ease; }
@@ -445,7 +447,7 @@ h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-ink); line-height: 1
 .doc__toggle svg { width: 18px; height: 18px; transition: transform .35s ease; }
 .doc.open .doc__toggle svg { transform: rotate(180deg); }
 .doc__toggle:hover span { text-decoration: underline; text-underline-offset: 4px; }
-.doc__creds { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 26px; padding-top: 22px; border-top: 1px solid var(--c-line); }
+.doc__creds { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 26px; }
 .doc__creds .cred { background: var(--c-surface); }
 
 
@@ -474,6 +476,11 @@ h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-ink); line-height: 1
 .breath-modal__skip { background: none; border: 0; cursor: pointer; font-family: var(--f-head); font-weight: 600; font-size: 15.5px; color: var(--c-muted); padding: 8px 4px; }
 .breath-modal__skip:hover { color: var(--c-ink); text-decoration: underline; text-underline-offset: 4px; }
 body.modal-open { overflow: hidden; }
+
+
+/* Destello al llegar desde el menú */
+.flash { animation: flash 1.6s ease; border-radius: var(--radius-lg); }
+@keyframes flash { 0% { box-shadow: 0 0 0 0 rgba(156,134,191,0); } 25% { box-shadow: 0 0 0 10px rgba(156,134,191,.25); } 100% { box-shadow: 0 0 0 0 rgba(156,134,191,0); } }
 
 /* Responsive */
 @media (max-width: 1000px) {
@@ -574,8 +581,8 @@ body.modal-open { overflow: hidden; }
     <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul class="nav__links" id="navLinks">
       <li><a href="#enfoque">Enfoque</a></li>
-      <li><a href="#especialidades">Especialidades</a></li>
-      <li><a href="#profesionales">Profesionales</a></li>
+      <li><a href="#finder">Especialidades</a></li>
+      <li><a href="#que-hace-cada-uno">Profesionales</a></li>
       <li><a href="#como-llegar">Cómo llegar</a></li>
       <li><a href="#turnos" class="btn btn--primary">Pedir turno</a></li>
     </ul>
@@ -597,7 +604,7 @@ body.modal-open { overflow: hidden; }
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
           Reservar turno
         </a>
-        <a href="#especialidades" class="btn btn--ghost">Ver especialidades</a>
+        <a href="#finder" class="btn btn--ghost">Ver especialidades</a>
       </div>
       <div class="hero__facts hero__fade" style="animation-delay:1.35s">
         <div class="fact"><span class="fact__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>Medicina general</div>
@@ -685,7 +692,7 @@ body.modal-open { overflow: hidden; }
       </div>
       <div class="finder__result" id="finderResult"><div><div id="finderCard"></div></div></div>
     </div>
-    <div class="spec__grid">
+    <div class="spec__grid" id="que-hace-cada-uno">
       <article class="spec spec--acu reveal tilt" id="specAcu"><span class="spec__glow"></span>
         <span class="spec__tag">Cuerpo · Dolor físico</span>
         <h3>Medicina General y Acupuntura</h3>
@@ -769,18 +776,6 @@ body.modal-open { overflow: hidden; }
           </div>
         </div>
         <blockquote class="doc__quote">“Busco la raíz de tus dolencias, no solo los síntomas.”</blockquote>
-        <ol class="timeline">
-          <li><strong>Médico</strong><span>Universidad de Buenos Aires (UBA)</span></li>
-          <li><strong>Formación en Acupuntura</strong><span>Durante varios años, con el Dr. Rosendo Dejo Asiu y el Dr. Lucio Koo Kcomt, pioneros de la disciplina en Argentina</span></li>
-          <li><strong>Medicina General + Acupuntura</strong><span>Diagnóstico integral con rigor científico y herramientas complementarias</span></li>
-        </ol>
-        <div class="doc__more">
-          <div>
-            <p>Combino la precisión de la Medicina General con la eficacia de la Acupuntura para ofrecerte un diagnóstico integral y tratamientos enfocados en la raíz de tus dolencias, no solo en los síntomas.</p>
-            <p>Mi formación médica me permite evaluar tu estado de salud con rigor científico, mientras que la Acupuntura me brinda herramientas complementarias para el manejo del dolor, el estrés, los problemas del sueño y diversos desequilibrios funcionales. A través de ella estimulo los mecanismos de autorregulación de tu propio cuerpo para liberar tensiones, armonizar el flujo energético y promover una sanación profunda y duradera.</p>
-          </div>
-        </div>
-        <button type="button" class="doc__toggle" aria-expanded="false"><span>Leer biografía completa</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
         <div class="doc__creds">
           <span class="cred">Médico UBA</span>
           <span class="cred">Acupuntura</span>
@@ -801,20 +796,6 @@ body.modal-open { overflow: hidden; }
           </div>
         </div>
         <blockquote class="doc__quote">“Integrar la mente y el cuerpo para lograr una mayor autoconciencia.”</blockquote>
-        <ol class="timeline">
-          <li><strong>Licenciada en Nutrición · Diploma de Honor</strong><span>Instituto Universitario de Ciencias de la Salud, Fundación H. A. Barceló</span></li>
-          <li><strong>Residencia de Nutrición</strong><span>Gobierno de la Ciudad de Buenos Aires</span></li>
-          <li><strong>Argentina y Reino Unido</strong><span>Hospitales, centros comunitarios y clínicas privadas, en el tratamiento de trastornos alimentarios</span></li>
-          <li><strong>Terapias complementarias</strong><span>Integración entre mente y cuerpo</span></li>
-        </ol>
-        <div class="doc__more">
-          <div>
-            <p>Me gradué como Licenciada en Nutrición en el Instituto Universitario de Ciencias de la Salud Fundación H. A. Barceló, con Diploma de Honor, y completé la Residencia de Nutrición en el Gobierno de la Ciudad de Buenos Aires.</p>
-            <p>Desde entonces he trabajado en ámbitos de salud diversos, incluyendo hospitales, centros de atención comunitaria y clínicas privadas de Argentina y Reino Unido, dedicándome al tratamiento de trastornos alimentarios y de la ingestión de los alimentos.</p>
-            <p>A lo largo de mi experiencia de vida he sumado a mi ejercicio profesional terapias complementarias que facilitan un estado de integración entre la mente y el cuerpo, logrando así una mayor autoconciencia.</p>
-          </div>
-        </div>
-        <button type="button" class="doc__toggle" aria-expanded="false"><span>Leer biografía completa</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
         <div class="doc__creds">
           <span class="cred">Diploma de Honor</span>
           <span class="cred">Residencia GCBA</span>
@@ -919,8 +900,8 @@ body.modal-open { overflow: hidden; }
         <h4>Navegación</h4>
         <ul>
           <li><a href="#enfoque">Enfoque</a></li>
-          <li><a href="#especialidades">Especialidades</a></li>
-          <li><a href="#profesionales">Profesionales</a></li>
+          <li><a href="#finder">Especialidades</a></li>
+          <li><a href="#que-hace-cada-uno">Profesionales</a></li>
           <li><a href="#como-llegar">Cómo llegar</a></li>
         </ul>
       </div>
@@ -1202,17 +1183,6 @@ body.modal-open { overflow: hidden; }
   });
 
 
-  // Biografía completa desplegable + timeline escalonada
-  document.querySelectorAll('.doc').forEach(function (doc) {
-    doc.querySelectorAll('.timeline li').forEach(function (li, i) { li.style.transitionDelay = (0.35 + i * 0.35) + 's'; });
-    var btn = doc.querySelector('.doc__toggle');
-    btn.addEventListener('click', function () {
-      var open = doc.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open);
-      btn.querySelector('span').textContent = open ? 'Ver menos' : 'Leer biografía completa';
-    });
-  });
-
   // Burbuja "¿Querés reservar un turno?" (después del modal, si se mostró)
   var hintDone = false;
   function showHint(delay) {
@@ -1225,6 +1195,19 @@ body.modal-open { overflow: hidden; }
     }, delay);
   }
   if (seen) showHint(7000);
+
+
+  // Al ir a "Especialidades" o "Profesionales" desde el menú, destacar el destino
+  document.querySelectorAll('a[href="#finder"], a[href="#que-hace-cada-uno"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var t = document.querySelector(a.getAttribute('href'));
+      if (!t) return;
+      setTimeout(function () {
+        t.classList.remove('flash'); void t.offsetWidth; t.classList.add('flash');
+        setTimeout(function () { t.classList.remove('flash'); }, 1700);
+      }, 650);
+    });
+  });
 
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
