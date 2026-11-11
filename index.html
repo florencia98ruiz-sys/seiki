@@ -386,6 +386,68 @@ h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-ink); line-height: 1
 .btn--wa::after, .btn--primary::after { content: ''; position: absolute; top: 0; left: -120%; width: 60%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.35), transparent); transform: skewX(-20deg); transition: left .7s ease; pointer-events: none; }
 .btn--wa:hover::after, .btn--primary:hover::after { left: 140%; }
 
+
+/* ===== Profesionales sin foto ===== */
+.mono { position: relative; display: inline-grid; place-items: center; flex-shrink: 0; border-radius: 50%; font-family: var(--f-head); font-weight: 600; color: #fff; letter-spacing: .04em; }
+.mono--acu { background: linear-gradient(135deg, var(--c-navy), var(--c-teal)); }
+.mono--nut { background: linear-gradient(135deg, var(--c-plum), var(--c-lav)); }
+.mono--sm { width: 40px; height: 40px; font-size: 14px; }
+.mono--md { width: 62px; height: 62px; font-size: 20px; }
+.mono--lg { width: 92px; height: 92px; font-size: 30px; background: none; }
+.mono--lg > span { position: absolute; inset: 7px; border-radius: 50%; display: grid; place-items: center; }
+.mono--lg.mono--acu > span { background: linear-gradient(135deg, var(--c-navy), var(--c-teal)); }
+.mono--lg.mono--nut > span { background: linear-gradient(135deg, var(--c-plum), var(--c-lav)); }
+.mono--lg::before { content: ''; position: absolute; inset: 0; border-radius: 50%; animation: spin 9s linear infinite; }
+.mono--lg.mono--acu::before { background: conic-gradient(var(--c-teal), transparent 30%, var(--c-navy) 55%, transparent 80%, var(--c-teal)); }
+.mono--lg.mono--nut::before { background: conic-gradient(var(--c-lav), transparent 30%, var(--c-plum) 55%, transparent 80%, var(--c-gold) 92%, var(--c-lav)); }
+.mono--lg::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: var(--c-surface); }
+.mono--lg > span { z-index: 1; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.team__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+.doc { position: relative; background: var(--c-bg); border: 1px solid var(--c-line); border-radius: var(--radius-lg); padding: 40px; overflow: hidden; transition: transform .25s ease-out, box-shadow .3s ease, opacity .8s ease; }
+.doc:hover { box-shadow: 0 24px 60px rgba(44,70,128,.12); }
+.doc::after { content: ''; position: absolute; width: 260px; height: 260px; right: -110px; top: -110px; border-radius: 50%; opacity: .5; pointer-events: none; transition: transform .8s ease; }
+.doc--acu::after { background: radial-gradient(circle, rgba(4,167,145,.22), transparent 65%); }
+.doc--nut::after { background: radial-gradient(circle, rgba(141,81,129,.2), transparent 65%); }
+.doc:hover::after { transform: scale(1.35); }
+.doc__top { display: flex; align-items: center; gap: 22px; margin-bottom: 24px; }
+.doc__role { font-family: var(--f-head); font-weight: 600; font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 6px; }
+.doc--acu .doc__role { color: var(--c-teal); }
+.doc--nut .doc__role { color: var(--c-plum); }
+.doc h3 { font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; }
+.doc__quote { font-family: var(--f-head); font-size: 19px; font-weight: 500; color: var(--c-ink); line-height: 1.45; padding: 18px 22px; background: var(--c-surface); border-radius: var(--radius-md); margin-bottom: 30px; }
+
+.timeline { list-style: none; position: relative; padding-left: 34px; margin-bottom: 8px; }
+.timeline::before { content: ''; position: absolute; left: 9px; top: 6px; bottom: 6px; width: 2px; background: var(--c-line); }
+.timeline::after { content: ''; position: absolute; left: 9px; top: 6px; width: 2px; height: calc(100% - 12px); transform-origin: top; transform: scaleY(0); transition: transform 1.6s .3s cubic-bezier(.4,0,.2,1); }
+.doc--acu .timeline::after { background: linear-gradient(var(--c-navy), var(--c-teal)); }
+.doc--nut .timeline::after { background: linear-gradient(var(--c-plum), var(--c-lav)); }
+.doc.visible .timeline::after { transform: scaleY(1); }
+.timeline li { position: relative; padding-bottom: 22px; opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+.timeline li:last-child { padding-bottom: 0; }
+.doc.visible .timeline li { opacity: 1; transform: none; }
+.timeline li::before { content: ''; position: absolute; left: -31px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: var(--c-surface); border: 3px solid var(--c-line); transform: scale(0); transition: transform .45s cubic-bezier(.3,1.6,.5,1), border-color .4s; z-index: 1; }
+.doc.visible .timeline li::before { transform: scale(1); }
+.doc--acu.visible .timeline li::before { border-color: var(--c-teal); }
+.doc--nut.visible .timeline li::before { border-color: var(--c-plum); }
+.timeline li:hover::before { transform: scale(1.3) !important; }
+.timeline strong { display: block; font-family: var(--f-head); font-weight: 600; font-size: 17px; color: var(--c-ink); line-height: 1.35; }
+.timeline span { display: block; font-size: 15px; color: var(--c-muted); line-height: 1.55; margin-top: 2px; }
+
+.doc__more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s ease; }
+.doc__more > div { overflow: hidden; }
+.doc__more p { font-size: 15.5px; margin-top: 14px; }
+.doc.open .doc__more { grid-template-rows: 1fr; }
+.doc__toggle { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; background: none; border: 0; padding: 0; cursor: pointer; font-family: var(--f-head); font-weight: 600; font-size: 15.5px; }
+.doc--acu .doc__toggle { color: var(--c-teal); }
+.doc--nut .doc__toggle { color: var(--c-plum); }
+.doc__toggle svg { width: 18px; height: 18px; transition: transform .35s ease; }
+.doc.open .doc__toggle svg { transform: rotate(180deg); }
+.doc__toggle:hover span { text-decoration: underline; text-underline-offset: 4px; }
+.doc__creds { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 26px; padding-top: 22px; border-top: 1px solid var(--c-line); }
+.doc__creds .cred { background: var(--c-surface); }
+
 /* Responsive */
 @media (max-width: 1000px) {
   .hero__grid, .approach__grid, .location__grid { grid-template-columns: 1fr; gap: 48px; }
@@ -394,6 +456,7 @@ h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-ink); line-height: 1
   .scroll-hint, .hero__ring { display: none; }
   .hero__visual { max-width: 440px; margin: 0 auto; width: 100%; }
   .spec__grid { grid-template-columns: 1fr; }
+  .team__grid { grid-template-columns: 1fr; }
   .pro, .pro--rev { grid-template-columns: 1fr; gap: 44px; }
   .pro--rev .pro__photo { order: 0; }
   .pro__photo { max-width: 360px; width: 100%; margin: 0 auto; }
@@ -433,6 +496,11 @@ h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-ink); line-height: 1
   .space__cap { opacity: 1; transform: none; font-size: 12.5px; padding: 6px 12px; left: 10px; bottom: 10px; }
   .pro__photo::before { display: none; }
   .pro + .pro { margin-top: 72px; }
+  .doc { padding: 30px 22px; }
+  .doc__top { gap: 16px; }
+  .mono--lg { width: 76px; height: 76px; font-size: 25px; }
+  .doc__quote { font-size: 17px; }
+  .doc .btn--wa { width: 100%; }
   .transit { padding: 26px 22px; }
   .map, .map iframe { min-height: 320px; }
   .cta { padding-bottom: 80px; }
@@ -454,7 +522,7 @@ h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-ink); line-height: 1
 }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-  .reveal, .spec li, .hero__title .w, .hero__fade { opacity: 1 !important; transform: none !important; filter: none !important; }
+  .reveal, .spec li, .timeline li, .hero__title .w, .hero__fade { opacity: 1 !important; transform: none !important; filter: none !important; }
 }
 </style>
 </head>
@@ -611,7 +679,7 @@ h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-ink); line-height: 1
         <span class="spec__tag">Cuerpo · Dolor físico</span>
         <h3>Medicina General y Acupuntura</h3>
         <div class="spec__who">
-          <div class="spec__avatar"><div class="photo"><img class="photo__img" src="fotos/felipe.jpg" alt="Dr. Felipe Chung Montoya"><div class="photo__fallback"><img src="logo/logo-icono.png" alt=""></div></div></div>
+          <span class="mono mono--sm mono--acu">FC</span>
           <span>Con el <strong>Dr. Felipe Chung Montoya</strong></span>
         </div>
         <ul>
@@ -632,7 +700,7 @@ h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-ink); line-height: 1
         <span class="spec__tag">Mente · Bienestar emocional</span>
         <h3>Nutrición y Terapias Integrativas</h3>
         <div class="spec__who">
-          <div class="spec__avatar"><div class="photo"><img class="photo__img" src="fotos/gabriela.jpg" alt="Lic. Gabriela Paula Toyama"><div class="photo__fallback"><img src="logo/logo-icono.png" alt=""></div></div></div>
+          <span class="mono mono--sm mono--nut">GT</span>
           <span>Con la <strong>Lic. Gabriela Paula Toyama</strong></span>
         </div>
         <p class="spec__intro">Un espacio para:</p>
@@ -680,55 +748,73 @@ h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-ink); line-height: 1
       <p class="section__lead">Formación universitaria, experiencia clínica y una mirada humana de la salud.</p>
     </div>
 
-    <article class="pro reveal from-left">
-      <div class="pro__photo">
-        <div class="pro__frame"><div class="photo"><img class="photo__img" src="fotos/felipe.jpg" alt="Dr. Felipe Chung Montoya"><div class="photo__fallback"><img src="logo/logo-icono.png" alt=""></div></div></div>
-      </div>
-      <div class="pro__body">
-        <div class="pro__role">Médico · Acupuntor</div>
-        <h3>Dr. Felipe Chung Montoya</h3>
-        <p>Me gradué como médico en la Universidad de Buenos Aires (UBA) y me formé en Acupuntura durante varios años con dos maestros excepcionales y pioneros de esta disciplina en Argentina, el Dr. Rosendo Dejo Asiu y el Dr. Lucio Koo Kcomt.</p>
-        <p>Combino la precisión de la Medicina General con la eficacia de la Acupuntura para ofrecerte un diagnóstico integral y tratamientos enfocados en la raíz de tus dolencias, no solo en los síntomas.</p>
-        <p>Mi formación médica me permite evaluar tu estado de salud con rigor científico, mientras que la Acupuntura me brinda herramientas complementarias para el manejo del dolor, el estrés, los problemas del sueño y diversos desequilibrios funcionales. A través de ella estimulo los mecanismos de autorregulación de tu propio cuerpo para liberar tensiones, armonizar el flujo energético y promover una sanación profunda y duradera.</p>
-        <div class="pro__creds">
+    <div class="team__grid">
+      <article class="doc doc--acu reveal from-left">
+        <div class="doc__top">
+          <span class="mono mono--lg mono--acu"><span>FC</span></span>
+          <div>
+            <div class="doc__role">Médico · Acupuntor</div>
+            <h3>Dr. Felipe Chung Montoya</h3>
+          </div>
+        </div>
+        <blockquote class="doc__quote">“Busco la raíz de tus dolencias, no solo los síntomas.”</blockquote>
+        <ol class="timeline">
+          <li><strong>Médico</strong><span>Universidad de Buenos Aires (UBA)</span></li>
+          <li><strong>Formación en Acupuntura</strong><span>Durante varios años, con el Dr. Rosendo Dejo Asiu y el Dr. Lucio Koo Kcomt, pioneros de la disciplina en Argentina</span></li>
+          <li><strong>Medicina General + Acupuntura</strong><span>Diagnóstico integral con rigor científico y herramientas complementarias</span></li>
+        </ol>
+        <div class="doc__more">
+          <div>
+            <p>Combino la precisión de la Medicina General con la eficacia de la Acupuntura para ofrecerte un diagnóstico integral y tratamientos enfocados en la raíz de tus dolencias, no solo en los síntomas.</p>
+            <p>Mi formación médica me permite evaluar tu estado de salud con rigor científico, mientras que la Acupuntura me brinda herramientas complementarias para el manejo del dolor, el estrés, los problemas del sueño y diversos desequilibrios funcionales. A través de ella estimulo los mecanismos de autorregulación de tu propio cuerpo para liberar tensiones, armonizar el flujo energético y promover una sanación profunda y duradera.</p>
+          </div>
+        </div>
+        <button type="button" class="doc__toggle" aria-expanded="false"><span>Leer biografía completa</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="doc__creds">
           <span class="cred">Médico UBA</span>
           <span class="cred">Acupuntura</span>
           <span class="cred">Medicina preventiva</span>
         </div>
         <div class="pro__contact">
-          <a href="https://wa.me/5491156097365?text=Hola%20Dr.%20Chung%2C%20quiero%20consultar%20por%20un%20turno" target="_blank" rel="noopener" class="btn btn--wa">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
-            11 5609-7365
-          </a>
+          <a href="https://wa.me/5491156097365?text=Hola%20Dr.%20Chung%2C%20quiero%20consultar%20por%20un%20turno" target="_blank" rel="noopener" class="btn btn--wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>11 5609-7365</a>
           <a href="mailto:seiki@felipechung.com" class="pro__mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>seiki@felipechung.com</a>
         </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="pro pro--rev reveal from-right">
-      <div class="pro__photo">
-        <div class="pro__frame"><div class="photo"><img class="photo__img" src="fotos/gabriela.jpg" alt="Lic. Gabriela Paula Toyama"><div class="photo__fallback"><img src="logo/logo-icono.png" alt=""></div></div></div>
-      </div>
-      <div class="pro__body">
-        <div class="pro__role">Licenciada en Nutrición</div>
-        <h3>Lic. Gabriela Paula Toyama</h3>
-        <p>Me gradué como Licenciada en Nutrición en el Instituto Universitario de Ciencias de la Salud Fundación H. A. Barceló, con Diploma de Honor, y completé la Residencia de Nutrición en el Gobierno de la Ciudad de Buenos Aires.</p>
-        <p>Desde entonces he trabajado en ámbitos de salud diversos, incluyendo hospitales, centros de atención comunitaria y clínicas privadas de Argentina y Reino Unido, dedicándome al tratamiento de trastornos alimentarios y de la ingestión de los alimentos.</p>
-        <p>A lo largo de mi experiencia de vida he sumado a mi ejercicio profesional terapias complementarias que facilitan un estado de integración entre la mente y el cuerpo, logrando así una mayor autoconciencia.</p>
-        <div class="pro__creds">
-          <span class="cred">Diploma de Honor · Fundación Barceló</span>
+      <article class="doc doc--nut reveal from-right">
+        <div class="doc__top">
+          <span class="mono mono--lg mono--nut"><span>GT</span></span>
+          <div>
+            <div class="doc__role">Licenciada en Nutrición</div>
+            <h3>Lic. Gabriela Paula Toyama</h3>
+          </div>
+        </div>
+        <blockquote class="doc__quote">“Integrar la mente y el cuerpo para lograr una mayor autoconciencia.”</blockquote>
+        <ol class="timeline">
+          <li><strong>Licenciada en Nutrición · Diploma de Honor</strong><span>Instituto Universitario de Ciencias de la Salud, Fundación H. A. Barceló</span></li>
+          <li><strong>Residencia de Nutrición</strong><span>Gobierno de la Ciudad de Buenos Aires</span></li>
+          <li><strong>Argentina y Reino Unido</strong><span>Hospitales, centros comunitarios y clínicas privadas, en el tratamiento de trastornos alimentarios</span></li>
+          <li><strong>Terapias complementarias</strong><span>Integración entre mente y cuerpo</span></li>
+        </ol>
+        <div class="doc__more">
+          <div>
+            <p>Me gradué como Licenciada en Nutrición en el Instituto Universitario de Ciencias de la Salud Fundación H. A. Barceló, con Diploma de Honor, y completé la Residencia de Nutrición en el Gobierno de la Ciudad de Buenos Aires.</p>
+            <p>Desde entonces he trabajado en ámbitos de salud diversos, incluyendo hospitales, centros de atención comunitaria y clínicas privadas de Argentina y Reino Unido, dedicándome al tratamiento de trastornos alimentarios y de la ingestión de los alimentos.</p>
+            <p>A lo largo de mi experiencia de vida he sumado a mi ejercicio profesional terapias complementarias que facilitan un estado de integración entre la mente y el cuerpo, logrando así una mayor autoconciencia.</p>
+          </div>
+        </div>
+        <button type="button" class="doc__toggle" aria-expanded="false"><span>Leer biografía completa</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="doc__creds">
+          <span class="cred">Diploma de Honor</span>
           <span class="cred">Residencia GCBA</span>
-          <span class="cred">Experiencia en Argentina y Reino Unido</span>
+          <span class="cred">Argentina y Reino Unido</span>
         </div>
         <div class="pro__contact">
-          <a href="https://wa.me/5491138413010?text=Hola%20Gabriela%2C%20quiero%20consultar%20por%20un%20turno" target="_blank" rel="noopener" class="btn btn--wa">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
-            11 3841-3010
-          </a>
+          <a href="https://wa.me/5491138413010?text=Hola%20Gabriela%2C%20quiero%20consultar%20por%20un%20turno" target="_blank" rel="noopener" class="btn btn--wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>11 3841-3010</a>
           <a href="mailto:seiki@gabrielatoyama.com" class="pro__mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>seiki@gabrielatoyama.com</a>
         </div>
-      </div>
-    </article>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -1009,8 +1095,8 @@ h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-ink); line-height: 1
 
   // Buscador: ¿qué te trae a SEIKI?
   var PROS = {
-    acu: { cls: '', title: 'Medicina General y Acupuntura', who: 'con el Dr. Felipe Chung Montoya', img: 'fotos/felipe.jpg', wa: '5491156097365', hi: 'Hola Dr. Chung', btn: 'Escribirle al Dr. Chung', card: 'specAcu' },
-    nut: { cls: 'nut', title: 'Nutrición y Terapias Integrativas', who: 'con la Lic. Gabriela Paula Toyama', img: 'fotos/gabriela.jpg', wa: '5491138413010', hi: 'Hola Gabriela', btn: 'Escribirle a la Lic. Toyama', card: 'specNut' }
+    acu: { cls: '', title: 'Medicina General y Acupuntura', who: 'con el Dr. Felipe Chung Montoya', ini: 'FC', wa: '5491156097365', hi: 'Hola Dr. Chung', btn: 'Escribirle al Dr. Chung', card: 'specAcu' },
+    nut: { cls: 'nut', title: 'Nutrición y Terapias Integrativas', who: 'con la Lic. Gabriela Paula Toyama', ini: 'GT', wa: '5491138413010', hi: 'Hola Gabriela', btn: 'Escribirle a la Lic. Toyama', card: 'specNut' }
   };
   var MAP = {
     dolor:        { p: 'acu', t: 'migrañas o dolor de cabeza', why: 'La acupuntura, junto con una evaluación médica, ayuda en migrañas y cefaleas tensionales.' },
@@ -1037,14 +1123,24 @@ h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-ink); line-height: 1
       var extra = m.x ? '<div class="result__extra">También puede complementarse con <a href="#specNut">Nutrición y Terapias Integrativas</a>.</div>' : '';
       resCard.innerHTML =
         '<div class="result pop ' + pr.cls + '">' +
-          '<div class="result__avatar"><div class="photo"><img class="photo__img" src="' + pr.img + '" alt=""><div class="photo__fallback"><img src="logo/logo-icono.png" alt=""></div></div></div>' +
+          '<span class="mono mono--md mono--' + m.p + '">' + pr.ini + '</span>' +
           '<div class="result__body"><div class="result__kicker">Te recomendamos empezar por</div><div class="result__title">' + pr.title + '</div><div class="result__why">' + m.why + ' <strong>' + pr.who + '</strong>.</div>' + extra + '</div>' +
           '<a class="btn btn--wa" target="_blank" rel="noopener" href="https://wa.me/' + pr.wa + '?text=' + encodeURIComponent(msg) + '">' + waIcon + pr.btn + '</a>' +
         '</div>';
-      var box = resCard.querySelector('.photo'), im = box.querySelector('.photo__img');
-      im.addEventListener('error', function () { box.classList.add('no-img'); });
       resWrap.classList.add('show');
       ['specAcu', 'specNut'].forEach(function (id) { document.getElementById(id).classList.toggle('is-match', id === pr.card); });
+    });
+  });
+
+
+  // Biografía completa desplegable + timeline escalonada
+  document.querySelectorAll('.doc').forEach(function (doc) {
+    doc.querySelectorAll('.timeline li').forEach(function (li, i) { li.style.transitionDelay = (0.35 + i * 0.35) + 's'; });
+    var btn = doc.querySelector('.doc__toggle');
+    btn.addEventListener('click', function () {
+      var open = doc.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+      btn.querySelector('span').textContent = open ? 'Ver menos' : 'Leer biografía completa';
     });
   });
 
