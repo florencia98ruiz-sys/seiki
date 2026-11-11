@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEIKI · Consultorios de Salud Integrativa en Caballito</title>
+<meta name="description" content="SEIKI, consultorios de salud integrativa en Caballito, CABA. Medicina general, acupuntura y nutrición para el tratamiento integral del dolor físico y emocional.">
+<meta name="keywords" content="acupuntura Caballito, medicina integrativa CABA, nutricionista Caballito, salud integrativa, tratamiento del dolor, acupuntura dolor crónico, medicina general Caballito">
+<link rel="icon" type="image/png" href="logo/logo-icono.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-bg:       #F8F7FB;
+  --c-surface:  #FFFFFF;
+  --c-soft:     #EFEBF6;
+  --c-mint:     #E6F5F2;
+  --c-navy:     #2C4680;
+  --c-ink:      #24335C;
+  --c-text:     #4A5370;
+  --c-muted:    #7C8399;
+  --c-lav:      #9C86BF;
+  --c-plum:     #8D5181;
+  --c-teal:     #04A791;
+  --c-gold:     #B8933A;
+  --c-line:     #E3DFEC;
+  --c-wa:       #25D366;
+  --c-wa-dark:  #1EB257;
+  --radius-sm:  10px;
+  --radius-md:  18px;
+  --radius-lg:  28px;
+  --shadow:     0 10px 40px rgba(44,70,128,.08);
+  --transition: .3s cubic-bezier(.4,0,.2,1);
+  --f-head:     'Quicksand', sans-serif;
+  --f-body:     'Nunito Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body { font-family: var(--f-body); color: var(--c-text); background: var(--c-bg); line-height: 1.7; font-size: 17px; overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+.container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-ink); line-height: 1.2; font-weight: 500; }
+
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-head); font-weight: 600; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--c-teal); margin-bottom: 16px; }
+.eyebrow::before { content: ''; width: 28px; height: 1.5px; background: currentColor; }
+.section { padding: 110px 0; }
+.section__head { max-width: 680px; margin-bottom: 56px; }
+.section__head--center { margin-left: auto; margin-right: auto; text-align: center; }
+.section__head--center .eyebrow::after { content: ''; width: 28px; height: 1.5px; background: currentColor; }
+.section__title { font-size: clamp(32px, 4.2vw, 46px); margin-bottom: 18px; }
+.section__lead { font-size: 18px; color: var(--c-muted); }
+
+/* Botones */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--f-head); font-weight: 600; font-size: 16px; padding: 15px 28px; border-radius: 999px; border: 1.5px solid transparent; cursor: pointer; transition: var(--transition); white-space: nowrap; }
+.btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+.btn--primary { background: var(--c-navy); color: #fff; }
+.btn--primary:hover { background: var(--c-ink); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(44,70,128,.25); }
+.btn--ghost { border-color: var(--c-line); color: var(--c-ink); background: rgba(255,255,255,.6); }
+.btn--ghost:hover { border-color: var(--c-lav); background: #fff; }
+.btn--wa { background: var(--c-wa); color: #fff; }
+.btn--wa:hover { background: var(--c-wa-dark); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(37,211,102,.3); }
+.btn--block { width: 100%; }
+
+/* Navbar */
+.navbar { position: fixed; inset: 0 0 auto 0; z-index: 100; transition: var(--transition); }
+.navbar.scrolled { background: rgba(248,247,251,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--c-line); }
+.navbar__inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand img { height: 46px; width: auto; }
+.brand__text { display: flex; flex-direction: column; line-height: 1; }
+.brand__name { font-family: var(--f-head); font-weight: 400; font-size: 26px; letter-spacing: .14em; color: var(--c-navy); }
+.brand__sub { font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--c-muted); margin-top: 5px; }
+.nav__links { display: flex; align-items: center; gap: 34px; list-style: none; }
+.nav__links a { font-family: var(--f-head); font-weight: 500; font-size: 15.5px; color: var(--c-ink); position: relative; }
+.nav__links a:not(.btn)::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 1.5px; background: var(--c-teal); transition: var(--transition); }
+.nav__links a:not(.btn):hover::after { width: 100%; }
+.nav__links .btn { padding: 11px 22px; font-size: 15px; color: #fff; }
+.nav__toggle { display: none; background: none; border: 0; width: 44px; height: 44px; cursor: pointer; position: relative; }
+.nav__toggle span { position: absolute; left: 10px; width: 24px; height: 2px; background: var(--c-navy); border-radius: 2px; transition: var(--transition); }
+.nav__toggle span:nth-child(1) { top: 15px; } .nav__toggle span:nth-child(2) { top: 21px; } .nav__toggle span:nth-child(3) { top: 27px; }
+.nav__toggle.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.nav__toggle.open span:nth-child(2) { opacity: 0; }
+.nav__toggle.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* Hero */
+.hero { position: relative; padding: 150px 0 100px; overflow: hidden; }
+.hero::before { content: ''; position: absolute; width: 720px; height: 720px; right: -220px; top: -180px; border-radius: 50%; background: radial-gradient(circle, rgba(156,134,191,.22), transparent 65%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; width: 560px; height: 560px; left: -240px; bottom: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(4,167,145,.14), transparent 65%); pointer-events: none; }
+.hero__grid > *, .approach__grid > *, .location__grid > *, .spec__grid > *, .pro > * { min-width: 0; }
+.hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: center; }
+.hero__title { font-size: clamp(40px, 5.6vw, 66px); font-weight: 400; margin-bottom: 22px; letter-spacing: -.01em; }
+.hero__title em { font-style: normal; font-weight: 600; background: linear-gradient(90deg, var(--c-plum), var(--c-lav) 45%, var(--c-teal)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero__sub { font-size: 21px; color: var(--c-text); margin-bottom: 14px; font-family: var(--f-head); font-weight: 500; }
+.hero__text { color: var(--c-muted); max-width: 520px; margin-bottom: 36px; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 44px; }
+.hero__facts { display: flex; flex-wrap: wrap; gap: 28px; padding-top: 28px; border-top: 1px solid var(--c-line); }
+.fact { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--c-ink); font-weight: 600; }
+.fact__icon { width: 40px; height: 40px; border-radius: 50%; background: var(--c-surface); box-shadow: var(--shadow); display: grid; place-items: center; color: var(--c-teal); }
+.fact__icon svg { width: 20px; height: 20px; }
+.hero__visual { position: relative; }
+.hero__frame { position: relative; aspect-ratio: 4/5; border-radius: 220px 220px var(--radius-lg) var(--radius-lg); overflow: hidden; background: linear-gradient(160deg, var(--c-soft), var(--c-mint)); box-shadow: 0 30px 80px rgba(44,70,128,.14); }
+.hero__badge { position: absolute; left: -28px; bottom: 48px; background: var(--c-surface); border-radius: var(--radius-md); padding: 18px 22px; box-shadow: var(--shadow); display: flex; align-items: center; gap: 14px; max-width: 280px; }
+.hero__badge img { width: 44px; height: auto; }
+.hero__badge strong { display: block; font-family: var(--f-head); color: var(--c-ink); font-size: 15.5px; line-height: 1.3; }
+.hero__badge span { display: block; font-size: 13.5px; line-height: 1.4; color: var(--c-muted); margin-top: 3px; }
+
+/* Fotos con fallback */
+.photo { position: relative; width: 100%; height: 100%; overflow: hidden; background: linear-gradient(160deg, var(--c-soft), var(--c-mint)); }
+.photo img.photo__img { width: 100%; height: 100%; object-fit: cover; }
+.photo__fallback { position: absolute; inset: 0; display: none; place-items: center; }
+.photo__fallback img { width: 42%; max-width: 220px; opacity: .9; }
+.photo.no-img .photo__img { display: none; }
+.photo.no-img .photo__fallback { display: grid; }
+
+/* Franja */
+.strip { background: var(--c-navy); color: #fff; padding: 22px 0; }
+.strip__inner { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 44px; font-family: var(--f-head); font-weight: 500; font-size: 16px; letter-spacing: .04em; }
+.strip__inner span { display: inline-flex; align-items: center; gap: 12px; }
+.strip__inner span::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--c-teal); }
+
+/* Enfoque */
+.approach__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.approach__text p { margin-bottom: 18px; }
+.approach__quote { margin-top: 30px; padding: 26px 30px; border-left: 3px solid var(--c-lav); background: var(--c-surface); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-family: var(--f-head); font-size: 19px; color: var(--c-ink); font-weight: 500; }
+.pillars { display: grid; gap: 18px; }
+.pillar { display: flex; gap: 20px; background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius-md); padding: 26px; transition: var(--transition); }
+.pillar:hover { border-color: transparent; box-shadow: var(--shadow); transform: translateY(-3px); }
+.pillar__icon { flex-shrink: 0; width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; }
+.pillar__icon svg { width: 26px; height: 26px; }
+.pillar:nth-child(1) .pillar__icon { background: var(--c-soft); color: var(--c-plum); }
+.pillar:nth-child(2) .pillar__icon { background: var(--c-mint); color: var(--c-teal); }
+.pillar:nth-child(3) .pillar__icon { background: #EEF1F8; color: var(--c-navy); }
+.pillar h3 { font-size: 20px; margin-bottom: 6px; font-weight: 600; }
+.pillar p { font-size: 15.5px; color: var(--c-muted); }
+
+/* Especialidades */
+.specialties { background: var(--c-surface); }
+.spec__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.spec { position: relative; display: flex; flex-direction: column; border-radius: var(--radius-lg); padding: 44px 40px 40px; overflow: hidden; border: 1px solid var(--c-line); background: var(--c-bg); }
+.spec::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 4px; }
+.spec--acu::before { background: linear-gradient(90deg, var(--c-navy), var(--c-teal)); }
+.spec--nut::before { background: linear-gradient(90deg, var(--c-plum), var(--c-lav)); }
+.spec__tag { font-family: var(--f-head); font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px; }
+.spec--acu .spec__tag { color: var(--c-teal); }
+.spec--nut .spec__tag { color: var(--c-plum); }
+.spec h3 { font-size: 30px; margin-bottom: 10px; }
+.spec__who { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--c-line); font-size: 15px; color: var(--c-muted); }
+.spec__who strong { color: var(--c-ink); font-weight: 700; }
+.spec__avatar { width: 46px; height: 46px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+.spec__intro { margin-bottom: 18px; color: var(--c-text); }
+.spec ul { list-style: none; display: grid; gap: 12px; margin-bottom: 34px; flex: 1; }
+.spec li { position: relative; padding-left: 32px; font-size: 16px; }
+.spec li::before { content: ''; position: absolute; left: 0; top: 4px; width: 20px; height: 20px; border-radius: 50%; background-repeat: no-repeat; background-position: center; background-size: 12px; }
+.spec--acu li::before { background-color: var(--c-mint); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2304A791' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E"); }
+.spec--nut li::before { background-color: var(--c-soft); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238D5181' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E"); }
+.spec li strong { color: var(--c-ink); font-weight: 700; }
+.spec li small { display: block; color: var(--c-muted); font-size: 14.5px; }
+.spec__note { margin-top: 36px; display: flex; align-items: center; gap: 18px; background: linear-gradient(90deg, var(--c-soft), var(--c-mint)); border-radius: var(--radius-md); padding: 24px 30px; color: var(--c-ink); }
+.spec__note svg { width: 34px; height: 34px; flex-shrink: 0; color: var(--c-navy); }
+.spec__note p { font-size: 16px; }
+
+/* Espacio */
+.space__grid { display: grid; grid-template-columns: 1fr 1.3fr 1fr; grid-template-rows: 270px 270px; gap: 20px; }
+.space__item { position: relative; border-radius: var(--radius-lg); overflow: hidden; }
+.space__item:nth-child(1) { grid-column: 1; grid-row: 1 / span 2; }
+.space__item:nth-child(2) { grid-column: 2; grid-row: 1; }
+.space__item:nth-child(3) { grid-column: 2; grid-row: 2; }
+.space__item:nth-child(4) { grid-column: 3; grid-row: 1 / span 2; }
+.space__cap { position: absolute; left: 16px; bottom: 16px; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--c-ink); font-family: var(--f-head); font-weight: 600; font-size: 14.5px; padding: 8px 16px; border-radius: 999px; transform: translateY(8px); opacity: 0; transition: var(--transition); }
+.space__item:hover .space__cap { opacity: 1; transform: none; }
+.no-hover .space__cap { opacity: 1; transform: none; }
+.entrance { display: flex; gap: 18px; align-items: center; background: var(--c-bg); border-radius: var(--radius-md); padding: 14px; margin-bottom: 24px; }
+.entrance__img { width: 92px; height: 130px; border-radius: 12px; overflow: hidden; flex-shrink: 0; }
+.entrance__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.entrance:hover .entrance__img img { transform: scale(1.08); }
+.entrance strong { display: block; font-family: var(--f-head); color: var(--c-ink); font-size: 16px; margin-bottom: 4px; }
+.entrance p { font-size: 14.5px; color: var(--c-muted); line-height: 1.55; }
+
+/* Profesionales */
+.team { background: var(--c-surface); }
+.pro { display: grid; grid-template-columns: 380px 1fr; gap: 64px; align-items: center; }
+.pro + .pro { margin-top: 96px; }
+.pro--rev { grid-template-columns: 1fr 380px; }
+.pro--rev .pro__photo { order: 2; }
+.pro__photo { position: relative; }
+.pro__frame { aspect-ratio: 4/5; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 24px 60px rgba(44,70,128,.12); }
+.pro__photo::before { content: ''; position: absolute; inset: 22px -22px -22px 22px; border-radius: var(--radius-lg); border: 1.5px solid var(--c-lav); opacity: .5; z-index: -1; }
+.pro--rev .pro__photo::before { inset: 22px 22px -22px -22px; border-color: var(--c-teal); }
+.pro__role { font-family: var(--f-head); font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--c-teal); margin-bottom: 10px; }
+.pro--rev .pro__role { color: var(--c-plum); }
+.pro h3 { font-size: clamp(28px, 3.2vw, 38px); margin-bottom: 20px; }
+.pro p { margin-bottom: 16px; }
+.pro__creds { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 30px; }
+.cred { font-size: 13.5px; font-weight: 600; color: var(--c-ink); background: var(--c-bg); border: 1px solid var(--c-line); padding: 7px 14px; border-radius: 999px; }
+.pro__contact { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; }
+.pro__mail { font-size: 15px; color: var(--c-muted); display: inline-flex; align-items: center; gap: 8px; }
+.pro__mail:hover { color: var(--c-navy); }
+.pro__mail svg { width: 18px; height: 18px; }
+
+/* Ubicación */
+.location__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 36px; align-items: stretch; }
+.map { border-radius: var(--radius-lg); overflow: hidden; min-height: 460px; box-shadow: var(--shadow); background: var(--c-soft); }
+.map iframe { width: 100%; height: 100%; min-height: 460px; border: 0; display: block; filter: saturate(.85); }
+.transit { background: var(--c-surface); border-radius: var(--radius-lg); padding: 36px; border: 1px solid var(--c-line); }
+.transit__addr { display: flex; gap: 14px; align-items: flex-start; padding-bottom: 24px; margin-bottom: 24px; border-bottom: 1px solid var(--c-line); }
+.transit__addr svg { width: 26px; height: 26px; color: var(--c-teal); flex-shrink: 0; margin-top: 2px; }
+.transit__addr strong { display: block; font-family: var(--f-head); font-size: 19px; color: var(--c-ink); }
+.transit__addr a { font-size: 14.5px; color: var(--c-teal); font-weight: 700; }
+.transit__group { margin-bottom: 20px; }
+.transit__group h4 { font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--c-muted); margin-bottom: 10px; font-family: var(--f-body); }
+.lines { display: flex; flex-wrap: wrap; gap: 7px; }
+.line { min-width: 38px; text-align: center; font-size: 13.5px; font-weight: 700; color: var(--c-navy); background: #EEF1F8; padding: 5px 10px; border-radius: 8px; }
+.line--subte { background: #E3F3FA; color: #0A7FA8; }
+.transit__other { font-size: 15px; display: grid; gap: 6px; }
+
+/* CTA final */
+.cta { padding: 0 0 110px; }
+.cta__box { position: relative; overflow: hidden; border-radius: 36px; padding: 80px 60px; text-align: center; background: linear-gradient(135deg, var(--c-navy) 0%, #3A3F86 50%, #5B4A8E 100%); color: #fff; }
+.cta__box::before { content: ''; position: absolute; width: 460px; height: 460px; border-radius: 50%; right: -140px; top: -180px; background: radial-gradient(circle, rgba(4,167,145,.35), transparent 65%); }
+.cta__box > * { position: relative; }
+.cta__box img { width: 74px; margin: 0 auto 24px; filter: drop-shadow(0 4px 20px rgba(0,0,0,.2)); }
+.cta__box h2 { color: #fff; font-size: clamp(30px, 4vw, 44px); margin-bottom: 16px; }
+.cta__box p { color: rgba(255,255,255,.8); max-width: 560px; margin: 0 auto 36px; font-size: 18px; }
+.cta__actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
+.cta__actions .btn { padding: 17px 30px; }
+.cta__actions .btn small { font-weight: 500; opacity: .85; }
+
+/* Footer */
+.footer { background: var(--c-ink); color: rgba(255,255,255,.7); padding: 72px 0 30px; font-size: 15px; }
+.footer__grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.footer .brand__name { color: #fff; }
+.footer .brand__sub { color: rgba(255,255,255,.55); }
+.footer__about { margin-top: 18px; max-width: 300px; }
+.footer h4 { color: #fff; font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+.footer ul { list-style: none; display: grid; gap: 10px; }
+.footer a:hover { color: #fff; }
+.footer__bottom { padding-top: 26px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13.5px; color: rgba(255,255,255,.5); }
+
+/* WhatsApp flotante */
+.float-wa { position: fixed; right: 24px; bottom: 24px; z-index: 120; }
+.float-wa__btn { width: 62px; height: 62px; border-radius: 50%; background: var(--c-wa); color: #fff; border: 0; cursor: pointer; display: grid; place-items: center; box-shadow: 0 10px 30px rgba(37,211,102,.45); transition: var(--transition); }
+.float-wa__btn:hover { transform: scale(1.07); }
+.float-wa__btn svg { width: 32px; height: 32px; }
+.float-wa__btn::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--c-wa); animation: pulse 2.4s infinite; pointer-events: none; }
+@keyframes pulse { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.55); opacity: 0; } }
+.float-wa__menu { position: absolute; right: 0; bottom: 78px; width: 290px; background: var(--c-surface); border-radius: var(--radius-md); box-shadow: 0 20px 60px rgba(36,51,92,.22); padding: 18px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: var(--transition); }
+.float-wa.open .float-wa__menu { opacity: 1; visibility: visible; transform: none; }
+.float-wa__menu p { font-family: var(--f-head); font-weight: 600; color: var(--c-ink); font-size: 15px; margin-bottom: 12px; padding: 0 4px; }
+.wa-opt { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; transition: var(--transition); }
+.wa-opt:hover { background: var(--c-bg); }
+.wa-opt__dot { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-family: var(--f-head); font-weight: 700; font-size: 15px; flex-shrink: 0; }
+.wa-opt strong { display: block; font-size: 15px; color: var(--c-ink); line-height: 1.3; }
+.wa-opt span { font-size: 13px; color: var(--c-muted); }
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+
+/* ===== Dinámica ===== */
+.progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--c-plum), var(--c-lav), var(--c-teal)); z-index: 200; }
+.hero::before { animation: drift1 18s ease-in-out infinite alternate; }
+.hero::after  { animation: drift2 22s ease-in-out infinite alternate; }
+@keyframes drift1 { to { transform: translate(-90px, 70px) scale(1.12); } }
+@keyframes drift2 { to { transform: translate(120px, -60px) scale(1.18); } }
+.hero__orb { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(2px); opacity: .55; animation: floaty 9s ease-in-out infinite; }
+.hero__orb--1 { width: 14px; height: 14px; background: var(--c-lav); top: 22%; left: 46%; }
+.hero__orb--2 { width: 9px; height: 9px; background: var(--c-teal); top: 68%; left: 52%; animation-delay: -3s; animation-duration: 11s; }
+.hero__orb--3 { width: 18px; height: 18px; background: var(--c-gold); opacity: .3; top: 14%; right: 8%; animation-delay: -6s; animation-duration: 13s; }
+@keyframes floaty { 0%,100% { transform: translate(0,0); } 33% { transform: translate(14px,-22px); } 66% { transform: translate(-12px,12px); } }
+
+.hero__title .w { display: inline-block; opacity: 0; transform: translateY(28px); filter: blur(6px); animation: wordIn .9s cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes wordIn { to { opacity: 1; transform: none; filter: blur(0); } }
+.hero__title em.w { background-size: 200% auto; animation: wordIn .9s cubic-bezier(.2,.7,.2,1) forwards, shimmer 6s linear infinite; }
+@keyframes shimmer { to { background-position: 200% center; } }
+.hero__fade { opacity: 0; transform: translateY(18px); animation: wordIn .9s ease forwards; }
+.hero__frame { transition: transform .4s ease-out; will-change: transform; }
+.hero__frame .photo__fallback img { animation: breatheLogo 7s ease-in-out infinite; }
+@keyframes breatheLogo { 0%,100% { transform: scale(1) translateY(0); } 50% { transform: scale(1.05) translateY(-8px); } }
+.hero__badge { animation: bob 6s ease-in-out infinite; }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.hero__ring { position: absolute; inset: -18px; border-radius: 240px 240px 40px 40px; border: 1.5px dashed rgba(156,134,191,.45); pointer-events: none; animation: ringPulse 7s ease-in-out infinite; }
+@keyframes ringPulse { 0%,100% { transform: scale(1); opacity: .6; } 50% { transform: scale(1.025); opacity: 1; } }
+.scroll-hint { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); width: 26px; height: 42px; border: 1.5px solid var(--c-line); border-radius: 14px; z-index: 2; }
+.scroll-hint::after { content: ''; position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: var(--c-lav); animation: scrollDot 2s ease-in-out infinite; }
+@keyframes scrollDot { 0% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
+
+/* Franja en movimiento */
+.strip { overflow: hidden; padding: 20px 0; }
+.marquee { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+.strip:hover .marquee { animation-play-state: paused; }
+.marquee__set { display: flex; gap: 56px; padding-right: 56px; font-family: var(--f-head); font-weight: 500; font-size: 17px; letter-spacing: .04em; white-space: nowrap; }
+.marquee__set span { display: inline-flex; align-items: center; gap: 14px; }
+.marquee__set span::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--c-teal); }
+.marquee__set span:nth-child(3n+2)::before { background: var(--c-lav); }
+.marquee__set span:nth-child(3n)::before { background: var(--c-gold); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Eyebrow que se dibuja */
+.reveal .eyebrow::before, .reveal .eyebrow::after { width: 0; transition: width .8s .2s ease; }
+.reveal.visible .eyebrow::before, .reveal.visible .eyebrow::after { width: 28px; }
+
+/* Listas escalonadas */
+.spec li { opacity: 0; transform: translateX(-12px); transition: opacity .5s ease, transform .5s ease; }
+.spec.visible li { opacity: 1; transform: none; }
+
+/* Tilt */
+.tilt { transform-style: preserve-3d; }
+.pillar.tilt { transition: transform .25s ease-out, box-shadow .3s ease, opacity .8s ease, border-color .3s ease; }
+.spec { transition: transform .25s ease-out, box-shadow .3s ease, opacity .8s ease, border-color .3s ease; }
+.spec:hover { box-shadow: 0 24px 60px rgba(44,70,128,.12); }
+.spec.is-match { border-color: var(--c-teal); box-shadow: 0 0 0 4px rgba(4,167,145,.12), 0 24px 60px rgba(44,70,128,.12); }
+.spec--nut.is-match { border-color: var(--c-plum); box-shadow: 0 0 0 4px rgba(141,81,129,.12), 0 24px 60px rgba(44,70,128,.12); }
+.spec__glow { position: absolute; width: 320px; height: 320px; border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity .3s; transform: translate(-50%,-50%); background: radial-gradient(circle, rgba(156,134,191,.18), transparent 65%); }
+.spec:hover .spec__glow { opacity: 1; }
+
+/* Respiración */
+.breath { padding: 0 0 110px; }
+.breath__box { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; background: linear-gradient(135deg, #F1EEF8, #E8F5F2); border-radius: 36px; padding: 64px; overflow: hidden; position: relative; }
+.breath__text h2 { font-size: clamp(28px, 3.6vw, 40px); margin-bottom: 14px; }
+.breath__text p { color: var(--c-muted); margin-bottom: 28px; max-width: 440px; }
+.breath__stage { position: relative; height: 320px; display: grid; place-items: center; }
+.breath__ring { position: absolute; width: 280px; height: 280px; border-radius: 50%; border: 1.5px dashed rgba(44,70,128,.18); }
+.breath__circle { width: 130px; height: 130px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, rgba(156,134,191,.55) 55%, rgba(4,167,145,.55)); box-shadow: 0 0 0 18px rgba(255,255,255,.35), 0 0 60px rgba(156,134,191,.45); display: grid; place-items: center; transition: transform 4s ease-in-out, box-shadow 4s ease-in-out; }
+.breath__circle img { width: 52px; opacity: .9; }
+.breath.running .breath__circle.in { transform: scale(1.9); box-shadow: 0 0 0 26px rgba(255,255,255,.3), 0 0 90px rgba(4,167,145,.45); }
+.breath:not(.running) .breath__circle { animation: breatheLogo 5s ease-in-out infinite; }
+.breath__label { position: absolute; bottom: 0; left: 0; right: 0; text-align: center; font-family: var(--f-head); font-weight: 600; font-size: 20px; color: var(--c-ink); letter-spacing: .04em; min-height: 30px; }
+.breath__count { font-size: 14px; color: var(--c-muted); font-weight: 500; margin-left: 8px; }
+
+/* Buscador de especialidad */
+.finder { background: var(--c-bg); border: 1px solid var(--c-line); border-radius: var(--radius-lg); padding: 40px; margin-bottom: 44px; }
+.finder__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; margin-bottom: 22px; }
+.finder__head h3 { font-size: 24px; font-weight: 600; }
+.finder__head span { font-size: 14.5px; color: var(--c-muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { font-family: var(--f-body); font-size: 15px; font-weight: 600; color: var(--c-ink); background: var(--c-surface); border: 1.5px solid var(--c-line); padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
+.chip:hover { border-color: var(--c-lav); transform: translateY(-2px); }
+.chip.active { background: var(--c-navy); border-color: var(--c-navy); color: #fff; }
+.chip__emo { font-size: 17px; line-height: 1; }
+.finder__result { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s ease; }
+.finder__result.show { grid-template-rows: 1fr; }
+.finder__result > div { overflow: hidden; }
+.result { margin-top: 26px; display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; background: var(--c-surface); border-radius: var(--radius-md); padding: 24px 28px; border-left: 4px solid var(--c-teal); box-shadow: var(--shadow); }
+.result.nut { border-left-color: var(--c-plum); }
+.result__avatar { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+.result__body { flex: 1; min-width: 220px; }
+.result__kicker { font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--c-teal); }
+.result.nut .result__kicker { color: var(--c-plum); }
+.result__title { font-family: var(--f-head); font-size: 21px; font-weight: 600; color: var(--c-ink); margin: 2px 0 4px; }
+.result__why { font-size: 15px; color: var(--c-muted); }
+.result__why strong { color: var(--c-ink); }
+.result__extra { font-size: 14px; color: var(--c-text); margin-top: 6px; }
+.result__extra a { color: var(--c-plum); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.result.pop { animation: popIn .5s cubic-bezier(.2,.8,.2,1.2); }
+@keyframes popIn { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+
+/* Galería con zoom */
+.space__item .photo__img, .pro__frame .photo__img { transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
+.space__item:hover .photo__img, .pro__frame:hover .photo__img { transform: scale(1.06); }
+.space__item .photo__fallback img { transition: transform 1.2s ease; }
+.space__item:hover .photo__fallback img { transform: scale(1.08) rotate(-2deg); }
+.reveal.from-left { transform: translateX(-40px); }
+.reveal.from-right { transform: translateX(40px); }
+.reveal.zoom { transform: scale(.94); }
+.reveal.visible.from-left, .reveal.visible.from-right, .reveal.visible.zoom { transform: none; }
+
+/* Líneas de colectivo */
+.line { transition: var(--transition); }
+.line:hover { background: var(--c-navy); color: #fff; transform: translateY(-2px); }
+
+/* CTA viva */
+.cta__box { background-size: 200% 200%; animation: ctaShift 14s ease infinite; }
+@keyframes ctaShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+.cta__box img { animation: breatheLogo 6s ease-in-out infinite; }
+
+/* Burbuja del WhatsApp flotante */
+.float-wa__bubble { position: absolute; right: 76px; bottom: 12px; background: var(--c-surface); color: var(--c-ink); font-family: var(--f-head); font-weight: 600; font-size: 14.5px; padding: 11px 16px; border-radius: 16px 16px 4px 16px; box-shadow: 0 12px 34px rgba(36,51,92,.18); white-space: nowrap; opacity: 0; transform: translateX(10px); transition: var(--transition); pointer-events: none; }
+.float-wa.hint .float-wa__bubble { opacity: 1; transform: none; }
+.float-wa.open .float-wa__bubble { opacity: 0; }
+
+/* Botones con brillo */
+.btn--wa, .btn--primary { position: relative; overflow: hidden; }
+.btn--wa::after, .btn--primary::after { content: ''; position: absolute; top: 0; left: -120%; width: 60%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.35), transparent); transform: skewX(-20deg); transition: left .7s ease; pointer-events: none; }
+.btn--wa:hover::after, .btn--primary:hover::after { left: 140%; }
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .hero__grid, .approach__grid, .location__grid { grid-template-columns: 1fr; gap: 48px; }
+  .breath__box { grid-template-columns: 1fr; text-align: center; }
+  .breath__text p { margin-left: auto; margin-right: auto; }
+  .scroll-hint, .hero__ring { display: none; }
+  .hero__visual { max-width: 440px; margin: 0 auto; width: 100%; }
+  .spec__grid { grid-template-columns: 1fr; }
+  .pro, .pro--rev { grid-template-columns: 1fr; gap: 44px; }
+  .pro--rev .pro__photo { order: 0; }
+  .pro__photo { max-width: 360px; width: 100%; margin: 0 auto; }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 860px) {
+  .nav__toggle { display: block; }
+  .nav__links { position: fixed; top: 80px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--c-bg); padding: 12px 24px 28px; box-shadow: 0 20px 40px rgba(36,51,92,.1); transform: translateY(-12px); opacity: 0; visibility: hidden; transition: var(--transition); }
+  .nav__links.open { transform: none; opacity: 1; visibility: visible; }
+  .nav__links li { border-bottom: 1px solid var(--c-line); }
+  .nav__links li:last-child { border: 0; padding-top: 18px; }
+  .nav__links a:not(.btn) { display: block; padding: 15px 0; }
+  .nav__links .btn { width: 100%; padding: 15px; }
+  .navbar { background: rgba(248,247,251,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .container { padding: 0 18px; }
+  .section { padding: 80px 0; }
+  .hero { padding: 118px 0 70px; }
+  .hero__sub { font-size: 19px; }
+  .hero__actions .btn { width: 100%; }
+  .eyebrow { font-size: 11.5px; letter-spacing: .14em; }
+  .hero__facts { gap: 16px; }
+  .hero__badge { left: 12px; right: 12px; bottom: 16px; max-width: none; }
+  .brand img { height: 40px; }
+  .brand__name { font-size: 22px; }
+  .brand__sub { display: none; }
+  .spec { padding: 36px 24px 28px; }
+  .spec h3 { font-size: 26px; }
+  .spec__note { flex-direction: column; align-items: flex-start; padding: 22px; }
+  .space__grid { grid-template-columns: 1fr 1fr; grid-template-rows: 170px 170px 300px; gap: 12px; }
+  .space__item:nth-child(1) { grid-column: 1; grid-row: 1 / span 2; }
+  .space__item:nth-child(2) { grid-column: 2; grid-row: 1; }
+  .space__item:nth-child(3) { grid-column: 2; grid-row: 2; }
+  .space__item:nth-child(4) { grid-column: 1 / span 2; grid-row: 3; }
+  .space__cap { opacity: 1; transform: none; font-size: 12.5px; padding: 6px 12px; left: 10px; bottom: 10px; }
+  .pro__photo::before { display: none; }
+  .pro + .pro { margin-top: 72px; }
+  .transit { padding: 26px 22px; }
+  .map, .map iframe { min-height: 320px; }
+  .cta { padding-bottom: 80px; }
+  .cta__box { padding: 56px 22px; border-radius: 26px; }
+  .cta__actions .btn { width: 100%; white-space: normal; }
+  .footer__grid { grid-template-columns: 1fr; }
+  .float-wa { right: 16px; bottom: 16px; }
+  .float-wa__menu { width: calc(100vw - 32px); }
+  .breath { padding-bottom: 80px; }
+  .breath__box { padding: 40px 22px; gap: 10px; }
+  .breath__stage { height: 280px; }
+  .breath__ring { width: 230px; height: 230px; }
+  .breath__circle { width: 104px; height: 104px; }
+  .finder { padding: 28px 20px; }
+  .chip { font-size: 14px; padding: 9px 14px; }
+  .result { padding: 22px 20px; }
+  .result .btn { width: 100%; }
+  .float-wa__bubble { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .reveal, .spec li, .hero__title .w, .hero__fade { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<!-- ========== NAVBAR ========== -->
+<header class="navbar" id="navbar">
+  <div class="container navbar__inner">
+    <a href="#inicio" class="brand" aria-label="SEIKI, inicio">
+      <img src="logo/logo-icono.png" alt="">
+      <span class="brand__text">
+        <span class="brand__name">SEIKI</span>
+        <span class="brand__sub">Salud Integrativa</span>
+      </span>
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#enfoque">Enfoque</a></li>
+      <li><a href="#especialidades">Especialidades</a></li>
+      <li><a href="#profesionales">Profesionales</a></li>
+      <li><a href="#como-llegar">Cómo llegar</a></li>
+      <li><a href="#turnos" class="btn btn--primary">Pedir turno</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<!-- ========== HERO ========== -->
+<section class="hero" id="inicio">
+  <span class="hero__orb hero__orb--1"></span><span class="hero__orb hero__orb--2"></span><span class="hero__orb hero__orb--3"></span>
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <span class="eyebrow hero__fade">Consultorios de salud integrativa · Caballito</span>
+      <h1 class="hero__title"><span class="w" style="animation-delay:.1s">Armonía,</span> <span class="w" style="animation-delay:.3s">conciencia</span> <span class="w" style="animation-delay:.5s">y</span> <em class="w" style="animation-delay:.7s">bienestar</em></h1>
+      <p class="hero__sub hero__fade" style="animation-delay:.9s">Tratamiento integral del dolor físico y emocional</p>
+      <p class="hero__text hero__fade" style="animation-delay:1.05s">Medicina general, acupuntura y nutrición en un mismo espacio. Buscamos la raíz de cada dolencia, no solo sus síntomas, y te acompañamos con un abordaje que integra cuerpo, mente y emociones.</p>
+      <div class="hero__actions hero__fade" style="animation-delay:1.2s">
+        <a href="#turnos" class="btn btn--wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
+          Reservar turno
+        </a>
+        <a href="#especialidades" class="btn btn--ghost">Ver especialidades</a>
+      </div>
+      <div class="hero__facts hero__fade" style="animation-delay:1.35s">
+        <div class="fact"><span class="fact__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>Medicina general</div>
+        <div class="fact"><span class="fact__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v14"/><circle cx="12" cy="19" r="3"/><path d="M9 5h6"/></svg></span>Acupuntura</div>
+        <div class="fact"><span class="fact__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>Nutrición</div>
+      </div>
+    </div>
+    <div class="hero__visual hero__fade" style="animation-delay:.4s">
+      <span class="hero__ring"></span>
+      <div class="hero__frame" id="heroFrame">
+        <div class="photo">
+          <img class="photo__img" src="fotos/consultorio-1.jpg" alt="Sala de espera de SEIKI en Caballito">
+          <div class="photo__fallback"><img src="logo/logo-seiki.png" alt="SEIKI"></div>
+        </div>
+      </div>
+      <div class="hero__badge">
+        <img src="logo/logo-icono.png" alt="">
+        <div><strong>Profesionales de la salud</strong><span>Médico UBA y Lic. en Nutrición</span></div>
+      </div>
+    </div>
+  </div>
+  <a href="#enfoque" class="scroll-hint" aria-label="Bajar"></a>
+</section>
+
+<div class="strip" aria-label="Qué tratamos">
+  <div class="marquee">
+    <div class="marquee__set"><span>Migrañas y cefaleas</span><span>Dolor crónico y agudo</span><span>Estrés y ansiedad</span><span>Insomnio</span><span>Trastornos digestivos</span><span>Dolores menstruales</span><span>Nutrición y hábitos de vida</span><span>Energía vital</span><span>Medicina preventiva</span></div>
+    <div class="marquee__set" aria-hidden="true"><span>Migrañas y cefaleas</span><span>Dolor crónico y agudo</span><span>Estrés y ansiedad</span><span>Insomnio</span><span>Trastornos digestivos</span><span>Dolores menstruales</span><span>Nutrición y hábitos de vida</span><span>Energía vital</span><span>Medicina preventiva</span></div>
+  </div>
+</div>
+
+<!-- ========== ENFOQUE ========== -->
+<section class="section" id="enfoque">
+  <div class="container approach__grid">
+    <div class="approach__text reveal from-left">
+      <span class="eyebrow">Nuestra visión</span>
+      <h2 class="section__title">La salud como una unidad</h2>
+      <p>El enfoque integrativo de la atención sanitaria tiene como objetivo el cuidado y la atención de la totalidad del paciente (cuerpo, mente y espíritu) y atiende a la realidad particular de los valores, cultura y comunidad del paciente y de la familia.</p>
+      <p>En Seiki consideramos al cuerpo humano como una unidad delicadamente equilibrada compuesta de partes interdependientes. Creemos también que el proceso de cambio es connatural al mismo y, por lo tanto, resulta agradable.</p>
+      <div class="approach__quote">Usamos la dirección positiva innata y la fuerza centrada en la vida del propio cuerpo con el objetivo de facilitar la autocuración.</div>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal from-right tilt">
+        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a4.5 4.5 0 0 0 0 9 4.5 4.5 0 0 1 0 9"/></svg></div>
+        <div><h3>Mirada integral</h3><p>Combinamos el rigor de la medicina general con herramientas complementarias para tratar lo físico y lo emocional de forma conjunta.</p></div>
+      </div>
+      <div class="pillar reveal from-right tilt">
+        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C12 7 8 4 3 4c0 5 4 8 9 8Z"/><path d="M12 12c0-5 4-8 9-8 0 5-4 8-9 8Z"/></svg></div>
+        <div><h3>A la raíz, no al síntoma</h3><p>Diagnósticos integrales y tratamientos que estimulan los mecanismos de autorregulación del propio cuerpo.</p></div>
+      </div>
+      <div class="pillar reveal from-right tilt">
+        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M15 14.5a5 5 0 0 1 6.5 4.8"/></svg></div>
+        <div><h3>Un equipo que trabaja junto</h3><p>Lo físico y lo emocional se tratan en coordinación: si tu caso lo requiere, te derivamos entre especialidades.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RESPIRACIÓN ========== -->
+<section class="breath" id="respira">
+  <div class="container">
+    <div class="breath__box reveal zoom">
+      <div class="breath__text">
+        <span class="eyebrow">Una pausa para vos</span>
+        <h2>Antes de seguir, respirá un minuto</h2>
+        <p>El estrés también se siente en el cuerpo. Seguí el círculo: inhalá cuando crece y exhalá cuando se achica. Una pequeña muestra de cómo trabajamos la conexión entre cuerpo y mente.</p>
+        <button class="btn btn--primary" id="breathBtn" type="button">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <span>Empezar</span>
+        </button>
+      </div>
+      <div class="breath__stage">
+        <span class="breath__ring"></span>
+        <div class="breath__circle" id="breathCircle"><img src="logo/logo-icono.png" alt=""></div>
+        <div class="breath__label" id="breathLabel">Tocá «Empezar»</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ESPECIALIDADES ========== -->
+<section class="section specialties" id="especialidades">
+  <div class="container">
+    <div class="section__head section__head--center reveal">
+      <span class="eyebrow">Especialidades</span>
+      <h2 class="section__title">¿En qué podemos ayudarte?</h2>
+      <p class="section__lead">Elegí la especialidad según lo que necesitás y escribile directo al profesional por WhatsApp.</p>
+    </div>
+    <div class="finder reveal" id="finder">
+      <div class="finder__head">
+        <h3>¿Qué te trae a SEIKI?</h3>
+        <span>Elegí una opción y te decimos con quién empezar</span>
+      </div>
+      <div class="chips" role="group" aria-label="Motivo de consulta">
+        <button type="button" class="chip" data-k="dolor"><span class="chip__emo">🤕</span>Dolor de cabeza o migrañas</button>
+        <button type="button" class="chip" data-k="muscular"><span class="chip__emo">💪</span>Contracturas y dolor muscular</button>
+        <button type="button" class="chip" data-k="estres"><span class="chip__emo">😮‍💨</span>Estrés o ansiedad</button>
+        <button type="button" class="chip" data-k="sueno"><span class="chip__emo">🌙</span>Duermo mal</button>
+        <button type="button" class="chip" data-k="digestion"><span class="chip__emo">🍵</span>Problemas digestivos</button>
+        <button type="button" class="chip" data-k="menstrual"><span class="chip__emo">🌸</span>Dolores menstruales</button>
+        <button type="button" class="chip" data-k="energia"><span class="chip__emo">🔋</span>Poca energía o defensas bajas</button>
+        <button type="button" class="chip" data-k="alimentacion"><span class="chip__emo">🥗</span>Mejorar mi alimentación</button>
+        <button type="button" class="chip" data-k="comida"><span class="chip__emo">🍽️</span>Mi relación con la comida</button>
+        <button type="button" class="chip" data-k="conexion"><span class="chip__emo">🌿</span>Reconectar cuerpo y mente</button>
+        <button type="button" class="chip" data-k="chequeo"><span class="chip__emo">🩺</span>Chequeo o prevención</button>
+      </div>
+      <div class="finder__result" id="finderResult"><div><div id="finderCard"></div></div></div>
+    </div>
+    <div class="spec__grid">
+      <article class="spec spec--acu reveal tilt" id="specAcu"><span class="spec__glow"></span>
+        <span class="spec__tag">Cuerpo · Dolor físico</span>
+        <h3>Medicina General y Acupuntura</h3>
+        <div class="spec__who">
+          <div class="spec__avatar"><div class="photo"><img class="photo__img" src="fotos/felipe.jpg" alt="Dr. Felipe Chung Montoya"><div class="photo__fallback"><img src="logo/logo-icono.png" alt=""></div></div></div>
+          <span>Con el <strong>Dr. Felipe Chung Montoya</strong></span>
+        </div>
+        <ul>
+          <li><strong>Manejo del dolor crónico y agudo</strong><small>Migrañas, cefaleas tensionales, dolores musculoesqueléticos, dolor postquirúrgico y dental.</small></li>
+          <li><strong>Control del estrés, la ansiedad y el insomnio</strong></li>
+          <li><strong>Trastornos gastrointestinales</strong><small>Síndrome de intestino irritable, gastritis, dispepsia.</small></li>
+          <li><strong>Trastornos menstruales</strong><small>Dismenorrea, síndrome premenstrual.</small></li>
+          <li><strong>Sistema inmunológico y energía vital</strong><small>Fortalecimiento y optimización.</small></li>
+          <li><strong>Chequeos de medicina general</strong><small>Medicina preventiva integral.</small></li>
+        </ul>
+        <a href="https://wa.me/5491156097365?text=Hola%20Dr.%20Chung%2C%20quiero%20consultar%20por%20un%20turno%20de%20acupuntura%20%2F%20medicina%20general" target="_blank" rel="noopener" class="btn btn--wa btn--block">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
+          Consultar con el Dr. Chung
+        </a>
+      </article>
+
+      <article class="spec spec--nut reveal tilt" id="specNut"><span class="spec__glow"></span>
+        <span class="spec__tag">Mente · Bienestar emocional</span>
+        <h3>Nutrición y Terapias Integrativas</h3>
+        <div class="spec__who">
+          <div class="spec__avatar"><div class="photo"><img class="photo__img" src="fotos/gabriela.jpg" alt="Lic. Gabriela Paula Toyama"><div class="photo__fallback"><img src="logo/logo-icono.png" alt=""></div></div></div>
+          <span>Con la <strong>Lic. Gabriela Paula Toyama</strong></span>
+        </div>
+        <p class="spec__intro">Un espacio para:</p>
+        <ul>
+          <li><strong>Quietud y sabiduría corporal</strong><small>Profundizar la experiencia de la quietud y la conexión con el cuerpo y con la manera en que estamos viviendo cada experiencia.</small></li>
+          <li><strong>Nutrición y hábitos de vida</strong><small>Acceder a la guía interior para obtener claridad sobre la alimentación, los hábitos y el restablecimiento de la salud en general.</small></li>
+          <li><strong>Energía vital y conciencia</strong><small>Armonizar la energía, nutrir la sensibilidad interna y promover la sanación para vivir de forma más auténtica y plena.</small></li>
+        </ul>
+        <a href="https://wa.me/5491138413010?text=Hola%20Gabriela%2C%20quiero%20consultar%20por%20un%20turno%20de%20nutrici%C3%B3n" target="_blank" rel="noopener" class="btn btn--wa btn--block">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.470-.88-.79-1.48-1.76-1.65-2.060-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.990 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
+          Consultar con la Lic. Toyama
+        </a>
+      </article>
+    </div>
+    <div class="spec__note reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.2v-2a4 4 0 0 1 4-4h12.8"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.8v2a4 4 0 0 1-4 4H4.2"/></svg>
+      <p><strong>Atención coordinada.</strong> Podés empezar por cualquiera de las dos especialidades. Si tu tratamiento lo necesita, los profesionales trabajan en conjunto y te derivan entre sí.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EL ESPACIO ========== -->
+<section class="section" id="espacio">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">El consultorio</span>
+      <h2 class="section__title">Un espacio pensado para tu tranquilidad</h2>
+      <p class="section__lead">Consultorios en Caballito, cómodos y accesibles, para una atención cercana y profesional.</p>
+    </div>
+    <div class="space__grid">
+      <div class="space__item reveal zoom"><div class="photo"><img class="photo__img" src="fotos/consultorio-2.jpg" alt="Consultorio SEIKI" loading="lazy"><div class="photo__fallback"><img src="logo/logo-icono.png" alt=""></div></div><span class="space__cap">Consultorio</span></div>
+      <div class="space__item reveal zoom"><div class="photo"><img class="photo__img" src="fotos/consultorio-3.jpg" alt="Espacio de atención SEIKI" loading="lazy"><div class="photo__fallback"><img src="logo/logo-icono.png" alt=""></div></div><span class="space__cap">Espacio de atención</span></div>
+      <div class="space__item reveal zoom"><div class="photo"><img class="photo__img" src="fotos/consultorio-4.jpg" alt="Sala de espera SEIKI" loading="lazy"><div class="photo__fallback"><img src="logo/logo-icono.png" alt=""></div></div><span class="space__cap">Sala de espera</span></div>
+      <div class="space__item reveal zoom"><div class="photo"><img class="photo__img" src="fotos/consultorio-5.jpg" alt="Patio de ingreso SEIKI" loading="lazy"><div class="photo__fallback"><img src="logo/logo-icono.png" alt=""></div></div><span class="space__cap">Patio de ingreso</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROFESIONALES ========== -->
+<section class="section team" id="profesionales">
+  <div class="container">
+    <div class="section__head section__head--center reveal">
+      <span class="eyebrow">Quiénes somos</span>
+      <h2 class="section__title">Nuestros profesionales</h2>
+      <p class="section__lead">Formación universitaria, experiencia clínica y una mirada humana de la salud.</p>
+    </div>
+
+    <article class="pro reveal from-left">
+      <div class="pro__photo">
+        <div class="pro__frame"><div class="photo"><img class="photo__img" src="fotos/felipe.jpg" alt="Dr. Felipe Chung Montoya"><div class="photo__fallback"><img src="logo/logo-icono.png" alt=""></div></div></div>
+      </div>
+      <div class="pro__body">
+        <div class="pro__role">Médico · Acupuntor</div>
+        <h3>Dr. Felipe Chung Montoya</h3>
+        <p>Me gradué como médico en la Universidad de Buenos Aires (UBA) y me formé en Acupuntura durante varios años con dos maestros excepcionales y pioneros de esta disciplina en Argentina, el Dr. Rosendo Dejo Asiu y el Dr. Lucio Koo Kcomt.</p>
+        <p>Combino la precisión de la Medicina General con la eficacia de la Acupuntura para ofrecerte un diagnóstico integral y tratamientos enfocados en la raíz de tus dolencias, no solo en los síntomas.</p>
+        <p>Mi formación médica me permite evaluar tu estado de salud con rigor científico, mientras que la Acupuntura me brinda herramientas complementarias para el manejo del dolor, el estrés, los problemas del sueño y diversos desequilibrios funcionales. A través de ella estimulo los mecanismos de autorregulación de tu propio cuerpo para liberar tensiones, armonizar el flujo energético y promover una sanación profunda y duradera.</p>
+        <div class="pro__creds">
+          <span class="cred">Médico UBA</span>
+          <span class="cred">Acupuntura</span>
+          <span class="cred">Medicina preventiva</span>
+        </div>
+        <div class="pro__contact">
+          <a href="https://wa.me/5491156097365?text=Hola%20Dr.%20Chung%2C%20quiero%20consultar%20por%20un%20turno" target="_blank" rel="noopener" class="btn btn--wa">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
+            11 5609-7365
+          </a>
+          <a href="mailto:seiki@felipechung.com" class="pro__mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>seiki@felipechung.com</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="pro pro--rev reveal from-right">
+      <div class="pro__photo">
+        <div class="pro__frame"><div class="photo"><img class="photo__img" src="fotos/gabriela.jpg" alt="Lic. Gabriela Paula Toyama"><div class="photo__fallback"><img src="logo/logo-icono.png" alt=""></div></div></div>
+      </div>
+      <div class="pro__body">
+        <div class="pro__role">Licenciada en Nutrición</div>
+        <h3>Lic. Gabriela Paula Toyama</h3>
+        <p>Me gradué como Licenciada en Nutrición en el Instituto Universitario de Ciencias de la Salud Fundación H. A. Barceló, con Diploma de Honor, y completé la Residencia de Nutrición en el Gobierno de la Ciudad de Buenos Aires.</p>
+        <p>Desde entonces he trabajado en ámbitos de salud diversos, incluyendo hospitales, centros de atención comunitaria y clínicas privadas de Argentina y Reino Unido, dedicándome al tratamiento de trastornos alimentarios y de la ingestión de los alimentos.</p>
+        <p>A lo largo de mi experiencia de vida he sumado a mi ejercicio profesional terapias complementarias que facilitan un estado de integración entre la mente y el cuerpo, logrando así una mayor autoconciencia.</p>
+        <div class="pro__creds">
+          <span class="cred">Diploma de Honor · Fundación Barceló</span>
+          <span class="cred">Residencia GCBA</span>
+          <span class="cred">Experiencia en Argentina y Reino Unido</span>
+        </div>
+        <div class="pro__contact">
+          <a href="https://wa.me/5491138413010?text=Hola%20Gabriela%2C%20quiero%20consultar%20por%20un%20turno" target="_blank" rel="noopener" class="btn btn--wa">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
+            11 3841-3010
+          </a>
+          <a href="mailto:seiki@gabrielatoyama.com" class="pro__mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>seiki@gabrielatoyama.com</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ========== CÓMO LLEGAR ========== -->
+<section class="section" id="como-llegar">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">Cómo llegar</span>
+      <h2 class="section__title">Estamos en Caballito</h2>
+      <p class="section__lead">A pocas cuadras de la estación Acoyte de la línea A, con muchas líneas de colectivo cerca.</p>
+    </div>
+    <div class="location__grid">
+      <div class="map reveal from-left">
+        <iframe src="https://www.google.com/maps?q=Pasaje+Dr.+Gregorio+Ar%C3%A1oz+Alfaro+293,+Caballito,+CABA&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa SEIKI, Pje. Dr. Gregorio Aráoz Alfaro 293, CABA" allowfullscreen></iframe>
+      </div>
+      <div class="transit reveal from-right">
+        <div class="transit__addr">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <strong>Pje. Dr. Gregorio Aráoz Alfaro 293</strong>
+            <span>Caballito, CABA</span><br>
+            <a href="https://www.google.com/maps/search/?api=1&query=Pasaje+Dr.+Gregorio+Ar%C3%A1oz+Alfaro+293,+CABA" target="_blank" rel="noopener">Abrir en Google Maps →</a>
+          </div>
+        </div>
+        <div class="entrance">
+          <div class="entrance__img"><img src="fotos/entrada.jpg" alt="Puerta de entrada de SEIKI, Pje. Aráoz Alfaro 293" loading="lazy"></div>
+          <div><strong>Así es la entrada</strong><p>El frente no tiene cartel: buscá la puerta de hierro negra con el número 293.</p></div>
+        </div>
+        <div class="transit__group">
+          <h4>Subte</h4>
+          <div class="lines"><span class="line line--subte">Línea A · Estación Acoyte</span></div>
+        </div>
+        <div class="transit__group">
+          <h4>Colectivos sobre Av. Rivadavia</h4>
+          <div class="lines"><span class="line">2</span><span class="line">8</span><span class="line">15</span><span class="line">26</span><span class="line">55</span><span class="line">85</span><span class="line">103</span><span class="line">119</span></div>
+        </div>
+        <div class="transit__group">
+          <h4>Colectivos sobre Acoyte</h4>
+          <div class="lines"><span class="line">42</span><span class="line">55</span><span class="line">84</span><span class="line">135</span><span class="line">145</span><span class="line">172</span><span class="line">181</span></div>
+        </div>
+        <div class="transit__group">
+          <h4>Colectivos sobre Campichuelo</h4>
+          <div class="lines"><span class="line">15</span><span class="line">65</span></div>
+        </div>
+        <div class="transit__group" style="margin-bottom:0">
+          <h4>Otros</h4>
+          <div class="transit__other">
+            <span>Tren Sarmiento: Estación Caballito (a 8 cuadras)</span>
+            <span>Trambus (próximamente)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA FINAL ========== -->
+<section class="cta" id="turnos">
+  <div class="container">
+    <div class="cta__box reveal zoom">
+      <img src="logo/logo-icono.png" alt="">
+      <h2>Empezá hoy tu camino hacia el bienestar</h2>
+      <p>Escribinos por WhatsApp para reservar un turno o hacer tu consulta. Te respondemos de forma personalizada.</p>
+      <div class="cta__actions">
+        <a href="https://wa.me/5491156097365?text=Hola%20Dr.%20Chung%2C%20quiero%20reservar%20un%20turno" target="_blank" rel="noopener" class="btn btn--wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
+          Acupuntura y Medicina General
+        </a>
+        <a href="https://wa.me/5491138413010?text=Hola%20Gabriela%2C%20quiero%20reservar%20un%20turno" target="_blank" rel="noopener" class="btn btn--wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
+          Nutrición y Terapias Integrativas
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="#inicio" class="brand">
+          <img src="logo/logo-icono.png" alt="">
+          <span class="brand__text"><span class="brand__name">SEIKI</span><span class="brand__sub">Salud Integrativa</span></span>
+        </a>
+        <p class="footer__about">Consultorios de salud integrativa en Caballito. Tratamiento integral del dolor físico y emocional.</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#enfoque">Enfoque</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#profesionales">Profesionales</a></li>
+          <li><a href="#como-llegar">Cómo llegar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Dr. Felipe Chung</h4>
+        <ul>
+          <li><a href="https://wa.me/5491156097365" target="_blank" rel="noopener">11 5609-7365</a></li>
+          <li><a href="mailto:seiki@felipechung.com">seiki@felipechung.com</a></li>
+        </ul>
+        <h4 style="margin-top:22px">Lic. Gabriela Toyama</h4>
+        <ul>
+          <li><a href="https://wa.me/5491138413010" target="_blank" rel="noopener">11 3841-3010</a></li>
+          <li><a href="mailto:seiki@gabrielatoyama.com">seiki@gabrielatoyama.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Dirección</h4>
+        <ul>
+          <li>Pje. Dr. Gregorio Aráoz Alfaro 293</li>
+          <li>Caballito, CABA</li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Pasaje+Dr.+Gregorio+Ar%C3%A1oz+Alfaro+293,+CABA" target="_blank" rel="noopener">Ver en el mapa →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> SEIKI · Consultorios de Salud Integrativa</span>
+      <span>www.seikisaludintegrativa.com</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== WHATSAPP FLOTANTE ========== -->
+<div class="float-wa" id="floatWa">
+  <div class="float-wa__bubble">¿Querés reservar un turno? 👋</div>
+  <div class="float-wa__menu" role="menu">
+    <p>¿Con quién querés hablar?</p>
+    <a class="wa-opt" href="https://wa.me/5491156097365?text=Hola%20Dr.%20Chung%2C%20quiero%20consultar%20por%20un%20turno" target="_blank" rel="noopener" role="menuitem">
+      <span class="wa-opt__dot" style="background:var(--c-teal)">FC</span>
+      <span><strong>Dr. Felipe Chung</strong><span>Medicina general y acupuntura</span></span>
+    </a>
+    <a class="wa-opt" href="https://wa.me/5491138413010?text=Hola%20Gabriela%2C%20quiero%20consultar%20por%20un%20turno" target="_blank" rel="noopener" role="menuitem">
+      <span class="wa-opt__dot" style="background:var(--c-plum)">GT</span>
+      <span><strong>Lic. Gabriela Toyama</strong><span>Nutrición y terapias integrativas</span></span>
+    </a>
+  </div>
+  <button class="float-wa__btn" id="floatWaBtn" aria-label="Contactar por WhatsApp" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
+  </button>
+</div>
+
+<script>
+(function () {
+  // Fotos: si el archivo no existe todavía, mostrar el logo como reemplazo
+  document.querySelectorAll('.photo').forEach(function (box) {
+    var img = box.querySelector('.photo__img');
+    if (!img) return;
+    var fail = function () { box.classList.add('no-img'); };
+    img.addEventListener('error', fail);
+    if (img.complete && img.naturalWidth === 0) fail();
+  });
+
+  // Navbar con fondo al hacer scroll
+  var navbar = document.getElementById('navbar');
+  var onScroll = function () { navbar.classList.toggle('scrolled', window.scrollY > 20); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Menú mobile
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      links.classList.remove('open'); toggle.classList.remove('open'); toggle.setAttribute('aria-expanded', false);
+    });
+  });
+
+  // WhatsApp flotante: elegir profesional
+  var fw = document.getElementById('floatWa');
+  var fwBtn = document.getElementById('floatWaBtn');
+  fwBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = fw.classList.toggle('open');
+    fwBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', function (e) {
+    if (!fw.contains(e.target)) { fw.classList.remove('open'); fwBtn.setAttribute('aria-expanded', false); }
+  });
+
+  // Animación al aparecer
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  } else { els.forEach(function (el) { el.classList.add('visible'); }); }
+
+
+  // ===== Dinámica =====
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // Barra de progreso de lectura
+  var bar = document.getElementById('progress');
+  var onProg = function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (h > 0 ? window.scrollY / h : 0) + ')';
+  };
+  window.addEventListener('scroll', onProg, { passive: true }); onProg();
+
+  // Apariciones escalonadas
+  document.querySelectorAll('.pillars, .space__grid, .spec__grid').forEach(function (g) {
+    Array.prototype.forEach.call(g.children, function (el, i) { if (el.classList.contains('reveal')) el.style.transitionDelay = (i * 0.12) + 's'; });
+  });
+  document.querySelectorAll('.spec').forEach(function (sp) {
+    sp.querySelectorAll('li').forEach(function (li, i) { li.style.transitionDelay = (0.25 + i * 0.08) + 's'; });
+  });
+
+  if (finePointer && !reduce) {
+    // Movimiento del hero con el mouse
+    var frame = document.getElementById('heroFrame');
+    var hero = document.querySelector('.hero');
+    hero.addEventListener('mousemove', function (e) {
+      var r = hero.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      frame.style.transform = 'perspective(900px) rotateY(' + (x * 6) + 'deg) rotateX(' + (-y * 6) + 'deg) translate(' + (x * 10) + 'px,' + (y * 10) + 'px)';
+    });
+    hero.addEventListener('mouseleave', function () { frame.style.transform = ''; });
+
+    // Inclinación suave de tarjetas
+    document.querySelectorAll('.tilt').forEach(function (card) {
+      var glow = card.querySelector('.spec__glow');
+      card.addEventListener('mousemove', function (e) {
+        if (!card.classList.contains('visible')) return;
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        var k = card.classList.contains('spec') ? 3 : 5;
+        card.style.transitionDelay = '0s';
+        card.style.transform = 'perspective(1000px) rotateY(' + (x * k) + 'deg) rotateX(' + (-y * k) + 'deg) translateY(-4px)';
+        if (glow) { glow.style.left = (e.clientX - r.left) + 'px'; glow.style.top = (e.clientY - r.top) + 'px'; }
+      });
+      card.addEventListener('mouseleave', function () { card.style.transform = ''; });
+    });
+  }
+
+  // Respiración guiada (6 ciclos de 4s + 4s)
+  var breathSec = document.getElementById('respira');
+  var breathBtn = document.getElementById('breathBtn');
+  var circle = document.getElementById('breathCircle');
+  var label = document.getElementById('breathLabel');
+  var timer = null, tick = null;
+  function setLabel(word, n) { label.innerHTML = word + '<span class="breath__count">' + n + '</span>'; }
+  function phase(inhale) {
+    var n = 4, word = inhale ? 'Inhalá' : 'Exhalá';
+    circle.classList.toggle('in', inhale);
+    setLabel(word, n);
+    clearInterval(tick);
+    tick = setInterval(function () { n--; if (n > 0) setLabel(word, n); }, 1000);
+  }
+  function stopBreath(msg) {
+    clearTimeout(timer); clearInterval(tick); timer = null;
+    breathSec.classList.remove('running');
+    circle.classList.remove('in');
+    breathBtn.querySelector('span').textContent = 'Empezar';
+    label.textContent = msg || 'Tocá «Empezar»';
+  }
+  breathBtn.addEventListener('click', function () {
+    if (timer) { stopBreath(); return; }
+    breathSec.classList.add('running');
+    breathBtn.querySelector('span').textContent = 'Pausar';
+    var step = 0;
+    (function loop() {
+      if (step >= 12) { stopBreath('Muy bien ✨ ¿Cómo te sentís?'); return; }
+      phase(step % 2 === 0); step++;
+      timer = setTimeout(loop, 4000);
+    })();
+  });
+
+  // Buscador: ¿qué te trae a SEIKI?
+  var PROS = {
+    acu: { cls: '', title: 'Medicina General y Acupuntura', who: 'con el Dr. Felipe Chung Montoya', img: 'fotos/felipe.jpg', wa: '5491156097365', hi: 'Hola Dr. Chung', btn: 'Escribirle al Dr. Chung', card: 'specAcu' },
+    nut: { cls: 'nut', title: 'Nutrición y Terapias Integrativas', who: 'con la Lic. Gabriela Paula Toyama', img: 'fotos/gabriela.jpg', wa: '5491138413010', hi: 'Hola Gabriela', btn: 'Escribirle a la Lic. Toyama', card: 'specNut' }
+  };
+  var MAP = {
+    dolor:        { p: 'acu', t: 'migrañas o dolor de cabeza', why: 'La acupuntura, junto con una evaluación médica, ayuda en migrañas y cefaleas tensionales.' },
+    muscular:     { p: 'acu', t: 'dolor muscular o contracturas', why: 'Tratamos dolores musculoesqueléticos, agudos o crónicos, buscando su origen.' },
+    estres:       { p: 'acu', t: 'estrés o ansiedad', why: 'La acupuntura ayuda a regular el estrés y la ansiedad desde el cuerpo.', x: 1 },
+    sueno:        { p: 'acu', t: 'problemas para dormir', why: 'Trabajamos el insomnio estimulando los mecanismos de autorregulación del cuerpo.' },
+    digestion:    { p: 'acu', t: 'problemas digestivos', why: 'Abordamos colon irritable, gastritis y dispepsia con una mirada médica e integrativa.', x: 1 },
+    menstrual:    { p: 'acu', t: 'dolores menstruales', why: 'Tratamos la dismenorrea y el síndrome premenstrual con acupuntura.' },
+    energia:      { p: 'acu', t: 'poca energía o defensas bajas', why: 'Buscamos fortalecer tu sistema inmunológico y optimizar tu energía vital.' },
+    alimentacion: { p: 'nut', t: 'mejorar mi alimentación', why: 'Un acompañamiento para revisar tu alimentación y tus hábitos de vida.' },
+    comida:       { p: 'nut', t: 'mi relación con la comida', why: 'Experiencia en el tratamiento de trastornos alimentarios, en Argentina y Reino Unido.' },
+    conexion:     { p: 'nut', t: 'reconectar cuerpo y mente', why: 'Un espacio para la quietud, la escucha del cuerpo y una mayor autoconciencia.' },
+    chequeo:      { p: 'acu', t: 'un chequeo o control preventivo', why: 'Chequeos de medicina general y medicina preventiva integral.' }
+  };
+  var waIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.880 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>';
+  var resWrap = document.getElementById('finderResult');
+  var resCard = document.getElementById('finderCard');
+  var chips = document.querySelectorAll('.chip');
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      chips.forEach(function (c) { c.classList.toggle('active', c === chip); });
+      var m = MAP[chip.dataset.k], pr = PROS[m.p];
+      var msg = pr.hi + ', quiero consultar por ' + m.t + '.';
+      var extra = m.x ? '<div class="result__extra">También puede complementarse con <a href="#specNut">Nutrición y Terapias Integrativas</a>.</div>' : '';
+      resCard.innerHTML =
+        '<div class="result pop ' + pr.cls + '">' +
+          '<div class="result__avatar"><div class="photo"><img class="photo__img" src="' + pr.img + '" alt=""><div class="photo__fallback"><img src="logo/logo-icono.png" alt=""></div></div></div>' +
+          '<div class="result__body"><div class="result__kicker">Te recomendamos empezar por</div><div class="result__title">' + pr.title + '</div><div class="result__why">' + m.why + ' <strong>' + pr.who + '</strong>.</div>' + extra + '</div>' +
+          '<a class="btn btn--wa" target="_blank" rel="noopener" href="https://wa.me/' + pr.wa + '?text=' + encodeURIComponent(msg) + '">' + waIcon + pr.btn + '</a>' +
+        '</div>';
+      var box = resCard.querySelector('.photo'), im = box.querySelector('.photo__img');
+      im.addEventListener('error', function () { box.classList.add('no-img'); });
+      resWrap.classList.add('show');
+      ['specAcu', 'specNut'].forEach(function (id) { document.getElementById(id).classList.toggle('is-match', id === pr.card); });
+    });
+  });
+
+  // Burbuja "¿Querés reservar un turno?"
+  setTimeout(function () {
+    if (fw.classList.contains('open')) return;
+    fw.classList.add('hint');
+    setTimeout(function () { fw.classList.remove('hint'); }, 6000);
+  }, 7000);
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
